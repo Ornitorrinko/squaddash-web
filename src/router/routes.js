@@ -1,8 +1,8 @@
-import Login from '../app/usuarios/Login.route'
+import Usuarios from '../app/usuarios/Usuarios.route'
 import Dashboard from '../app/dashboard/Dashboard.route'
 
 let routes = [].concat(
-  Login,
+  Usuarios,
   Dashboard
 )
 
