@@ -4,11 +4,45 @@
       "id": 1,
       "nome": "Mateus Costa",
       "email": "mateussilveiracosta98@gmail.com",
+      "foto_perfil": "link",
       "senha": "123456",
       "status": true,
       "role": "admin",
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00"
+    },
+    {
+      "foto_perfil": "http://res.cloudinary.com/ornito-media/image/upload/v1531947844/squaddash/qzpvzvgwsgjvajngirzy.jpg",
+      "nome": "Mateus da Silveira Costa",
+      "email": "mateus@ornito.com.br",
+      "senha": "123456",
+      "status": true,
+      "role": "admin",
+      "created_at": 1531947909464,
+      "updated_at": 1531947909464,
+      "id": 2
+    },
+    {
+      "foto_perfil": "http://res.cloudinary.com/ornito-media/image/upload/v1531948013/squaddash/lor77kbxdgsmkwrtypdq.jpg",
+      "nome": "Mateus da Silveira Costa",
+      "email": "mateus.costa@spread.com.br",
+      "senha": "123456",
+      "role": "admin",
+      "status": true,
+      "created_at": 1531948069824,
+      "updated_at": 1531948069824,
+      "id": 3
+    },
+    {
+      "foto_perfil": "http://www.autopostosilvestre.com.br/img/no-photo.jpeg",
+      "nome": "Mateus da Silveira Costa",
+      "email": "mateus@ornito.com.br",
+      "senha": "123456",
+      "role": "admin",
+      "status": true,
+      "created_at": 1531951555466,
+      "updated_at": 1531951555466,
+      "id": 4
     }
   ],
   "clientes": [
@@ -16,6 +50,7 @@
       "id": 1,
       "nome": "Spread",
       "email_de_contato": "vinicius.mesquita@spread.com.br",
+      "logo": "link",
       "status": true,
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00"
@@ -25,7 +60,7 @@
     {
       "id": 1,
       "nome": "Manolo",
-      "salario": 2000.00,
+      "salario": 2000,
       "modalidade_de_contratacao": "CLT",
       "status": true,
       "created_at": "2018-05-09 00:00:00",
@@ -40,7 +75,7 @@
         {
           "id": 1,
           "nome": "Manolo",
-          "salario": 2000.00,
+          "salario": 2000,
           "modalidade_de_contratacao": "CLT",
           "status": true,
           "created_at": "2018-05-09 00:00:00",
@@ -56,8 +91,8 @@
     {
       "id": 1,
       "nome": "Genova Ecosystem",
-      "custo": 2000.00,
-      "lucro": 20000.00,
+      "custo": 2000,
+      "lucro": 20000,
       "cliente": {
         "id": 1,
         "nome": "Spread",
@@ -73,7 +108,7 @@
           {
             "id": 1,
             "nome": "Manolo",
-            "salario": 2000.00,
+            "salario": 2000,
             "modalidade_de_contratacao": "CLT",
             "status": true,
             "created_at": "2018-05-09 00:00:00",
