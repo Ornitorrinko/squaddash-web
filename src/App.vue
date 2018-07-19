@@ -1,11 +1,20 @@
 <template lang='pug'>
   #app
+    Header(v-if='showHeader')
     router-view
 </template>
 
 <script>
+import Header from './app/users/Header'
 export default {
-  name: 'App'
+  computed: {
+    showHeader () {
+      return this.$store.state.showHeader
+    }
+  },
+  components: {
+    Header
+  }
 }
 </script>
 

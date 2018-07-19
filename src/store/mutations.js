@@ -7,5 +7,8 @@ export default {
   },
   'IMAGE_UPLOADED_FAIL' (state) {
     state.image = 'Falha ao fazer o upload'
+  },
+  'SET_HEADER' (state) {
+    state.showHeader = !state.showHeader
   }
 }

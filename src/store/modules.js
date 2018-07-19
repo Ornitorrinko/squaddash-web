@@ -1,6 +1,6 @@
 import Dashboard from '../app/dashboard/Dashboard.store'
-import Usuarios from '../app/usuarios/Usuarios.store'
+import Users from '../app/users/Users.store'
 export default {
   Dashboard,
-  Usuarios
+  Users
 }

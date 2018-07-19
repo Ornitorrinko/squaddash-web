@@ -1,5 +1,5 @@
 <template lang='pug'>
-.cadastro-usuario
+.cadastro-user
   Notification(
     :title='notification.title',
     :message='notification.message',
@@ -20,33 +20,48 @@
         )
         span.has-text-danger(v-if='!securityPassword && securityPassword.length === 0') Preencha este campo
         span.has-text-danger(v-else-if='securityPassword !== "ornit0quatro"') Senha errada
-    form.usuario-form(v-if='securityPassword === "ornit0quatro"')
+      .control
+        a.button.is-light.fullWidth(@click='cancel()') Cancelar
+    form.user-form(v-if='securityPassword === "ornit0quatro"')
       .field.columns
         .column.is-3
           label.label Foto de perfil:
           .control
-            PhotoUpload(@upload='assignFotoInUsuario', @remove='assignFotoInUsuario')
+            PhotoUpload(@upload='assignImageInUser', @remove='assignImageInUser')
         .column
-          .field
-            label.label Nome completo:
-            .control
-              input#name.input(
-                type="text",
-                placeholder="Fulano de Beltrano Costa",
-                v-model='usuario.nome',
-                @input='verifyNameField(usuario.nome)',
-                v-bind:class='{"is-danger": isInvalidName.status}',
-                required
-              )
-              span.has-text-danger(v-if='isInvalidName.status') {{isInvalidName.error}}
+          .field.columns
+            .column
+              label.label Primeiro nome:
+              .control
+                input#name.input(
+                  type="text",
+                  placeholder="Fulano",
+                  v-model='firstName',
+                  @input='verifyNameField(firstName)',
+                  v-bind:class='{"is-danger": isInvalidName.status}',
+                  required
+                )
+                span.has-text-danger(v-if='isInvalidName.status') {{isInvalidName.error}}
+            .column
+              label.label Último nome:
+              .control
+                input#name.input(
+                  type="text",
+                  placeholder="Costa",
+                  v-model='lastName',
+                  @input='verifyNameField(lastName)',
+                  v-bind:class='{"is-danger": isInvalidName.status}',
+                  required
+                )
+                span.has-text-danger(v-if='isInvalidName.status') {{isInvalidName.error}}
           .field
             label.label Email:
             .control
               input#email.input(
                 type="email",
                 placeholder="exemplo@dominio.com.br",
-                v-model='usuario.email',
-                @input='verifyEmailField(usuario.email)'
+                v-model='user.email',
+                @input='verifyEmailField(user.email)'
                 v-bind:class='{"is-danger": isInvalidEmail.status}',
                 required
               )
@@ -57,8 +72,8 @@
               input#password.input(
                 type="password",
                 placeholder="mínimo 6 caractéres",
-                v-model='usuario.senha',
-                @input='verifyPasswordField(usuario.senha)'
+                v-model='user.password',
+                @input='verifyPasswordField(user.password)'
                 v-bind:class='{"is-danger": isInvalidPassword.status}',
                 required
               )
@@ -70,7 +85,7 @@
                 type="password",
                 placeholder="mínimo 6 caractéres",
                 v-model='confirmPassword',
-                @input='verifyConfirmPasswordField(confirmPassword, usuario.senha)',
+                @input='verifyConfirmPasswordField(confirmPassword, user.password)',
                 v-bind:class='{"is-danger": isInvalidConfirmPassword.status}',
                 required
               )
@@ -78,7 +93,7 @@
       .field.is-grouped.is-grouped-right(v-if='!loading')
         p.control
           button.button.is-info(
-            @click='createUsuario(usuario, $event)',
+            @click='createUser(user, $event)',
           ) Salvar
         p.control
           a.button.is-light(@click='cancel()') Cancelar
@@ -90,6 +105,7 @@
 <script>
 import Notification from '../../components/Notification'
 import PhotoUpload from '../../components/PhotoUpload'
+import localstorage from '../../utils/localstorage'
 export default {
   components: {
     Notification,
@@ -97,13 +113,13 @@ export default {
   },
   computed: {
     messageClass () {
-      return this.$store.state.Usuarios.messageClass
+      return this.$store.state.Users.messageClass
     },
     title () {
-      return this.$store.state.Usuarios.title
+      return this.$store.state.Users.title
     },
     message () {
-      return this.$store.state.Usuarios.message
+      return this.$store.state.Users.message
     },
     loading () {
       return this.$store.state.loading
@@ -116,7 +132,7 @@ export default {
     return {
       confirmPassword: '',
       securityPassword: '',
-      usuario: {foto_perfil: 'http://www.autopostosilvestre.com.br/img/no-photo.jpeg'},
+      user: {profile_photo: 'http://www.autopostosilvestre.com.br/img/no-photo.jpeg'},
       isInvalidPassword: {status: false, error: ''},
       isInvalidConfirmPassword: {status: false, error: ''},
       isInvalidName: {status: false, error: ''},
@@ -126,15 +142,18 @@ export default {
         messageClass: '',
         title: '',
         open: false
-      }
+      },
+      firstName: '',
+      lastName: ''
     }
   },
   methods: {
-    createUsuario (usuario, event) {
+    createUser (user, event) {
       event.preventDefault()
-      usuario.role = 'admin'
+      user.role = 'admin'
+      user.name = `${this.firstName} ${this.lastName}`
       if (this.checkForm()) {
-        this.$store.dispatch('createUsuario', usuario).then(() => {
+        this.$store.dispatch('createUser', user).then(() => {
           if (this.messageClass === 'success') {
             this.openNotification(this.message, this.messageClass, this.title)
             setTimeout(() => {
@@ -153,27 +172,28 @@ export default {
       this.notification.title = title
       this.notification.open = true
     },
-    assignFotoInUsuario (file, link) {
+    assignImageInUser (file, link) {
       this.$store.dispatch('uploadImageToCloudinary', file).then(() => {
         if (typeof this.image === 'string') {
           this.openNotification('Remova a imagem e tente novamente', 'danger', 'Não foi possível fazer o upload')
         } else {
-          this.usuario.foto_perfil = this.image.url
+          this.user.profile_photo = this.image.url
         }
       })
     },
     checkForm () {
-      return this.verifyNameField(this.usuario.nome) &&
-        this.verifyEmailField(this.usuario.email) &&
-        this.verifyPasswordField(this.usuario.senha) &&
-        this.verifyConfirmPasswordField(this.usuario.senha, this.confirmPassword)
+      return this.verifyNameField(this.firstName) &&
+        this.verifyNameField(this.lastName) &&
+        this.verifyEmailField(this.user.email) &&
+        this.verifyPasswordField(this.user.password) &&
+        this.verifyConfirmPasswordField(this.user.password, this.confirmPassword)
     },
-    verifyNameField (usuarioName) {
-      if (usuarioName && usuarioName.match('[0-9]')) {
+    verifyNameField (userName) {
+      if (userName && userName.match('[0-9]')) {
         this.isInvalidName.status = true
         this.isInvalidName.error = 'Nome inválido, somente letras'
         return false
-      } else if (!usuarioName || usuarioName.length === 0) {
+      } else if (!userName || userName.length === 0) {
         this.isInvalidName.status = true
         this.isInvalidName.error = 'Preencha este campo'
         return false
@@ -182,12 +202,12 @@ export default {
         return true
       }
     },
-    verifyEmailField (usuarioEmail) {
-      if (usuarioEmail && !usuarioEmail.match('@')) {
+    verifyEmailField (userEmail) {
+      if (userEmail && !userEmail.match('@')) {
         this.isInvalidEmail.status = true
         this.isInvalidEmail.error = 'Email inválido, está faltando o @'
         return false
-      } else if (!usuarioEmail || usuarioEmail.length === 0) {
+      } else if (!userEmail || userEmail.length === 0) {
         this.isInvalidEmail.status = true
         this.isInvalidEmail.error = 'Preencha este campo'
         return false
@@ -196,12 +216,12 @@ export default {
         return true
       }
     },
-    verifyPasswordField (usuarioPassword) {
-      if (usuarioPassword && usuarioPassword.length < 6) {
+    verifyPasswordField (userPassword) {
+      if (userPassword && userPassword.length < 6) {
         this.isInvalidPassword.status = true
         this.isInvalidPassword.error = 'A senha deve conter no mínimo 6 caractéres'
         return false
-      } else if (!usuarioPassword || usuarioPassword.length === 0) {
+      } else if (!userPassword || userPassword.length === 0) {
         this.isInvalidPassword.status = true
         this.isInvalidPassword.error = 'Preencha este campo'
         return false
@@ -210,8 +230,8 @@ export default {
         return true
       }
     },
-    verifyConfirmPasswordField (confirmPassword, usuarioPassword) {
-      if (confirmPassword && usuarioPassword && confirmPassword !== usuarioPassword) {
+    verifyConfirmPasswordField (confirmPassword, userPassword) {
+      if (confirmPassword && userPassword && confirmPassword !== userPassword) {
         this.isInvalidConfirmPassword.status = true
         this.isInvalidConfirmPassword.error = 'As senhas estão diferentes'
         return false
@@ -224,15 +244,20 @@ export default {
         return true
       }
     }
+  },
+  beforeCreate () {
+    if (!localstorage.get('user')) {
+      this.$store.dispatch('setHeader')
+    }
   }
 }
 </script>
 
 <style lang='scss'>
-.cadastro-usuario {
+.cadastro-user {
   margin-top: 5%;
 }
-.usuario-form {
+.user-form {
   border: 1px solid #01bca2;
   padding: 20px;
   border-radius: 10px;

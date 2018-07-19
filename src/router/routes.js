@@ -1,8 +1,8 @@
-import Usuarios from '../app/usuarios/Usuarios.route'
+import Users from '../app/users/Users.route'
 import Dashboard from '../app/dashboard/Dashboard.route'
 
 let routes = [].concat(
-  Usuarios,
+  Users,
   Dashboard
 )
 

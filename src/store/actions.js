@@ -11,5 +11,8 @@ export default {
       commit('LOADING')
       commit('IMAGE_UPLOADED_FAIL')
     }
+  },
+  setHeader ({commit}) {
+    commit('SET_HEADER')
   }
 }

@@ -1,5 +1,5 @@
 import Login from './Login'
-import CadastroUsuario from './CadastroUsuario'
+import UserRegister from './UserRegister'
 let route = [
   {
     path: '/login',
@@ -7,7 +7,7 @@ let route = [
   },
   {
     path: '/cadastro',
-    component: CadastroUsuario
+    component: UserRegister
   }
 ]
 export default route

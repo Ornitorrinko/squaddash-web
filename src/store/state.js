@@ -1,4 +1,5 @@
 export default {
   loading: false,
-  image: ''
+  image: '',
+  showHeader: true
 }

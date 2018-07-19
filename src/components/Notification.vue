@@ -12,7 +12,7 @@ export default {
     type: String,
     duration: Number,
     message: String,
-    title: String,
+    title: {type: String, default: ''},
     open: {type: Boolean, default: false},
     openPermanently: false
   },
@@ -42,7 +42,9 @@ export default {
     }
   },
   mounted () {
-    if (this.duration && this.duration > 0) this.openNotification()
+    if (this.open) {
+      this.openNotification()
+    }
   }
 }
 </script>
