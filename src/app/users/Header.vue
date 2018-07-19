@@ -6,19 +6,19 @@ header.header
         img(src='../../assets/SquadDash-logo.png')
     .menu-navigation.column
       router-link(:to='{ path: `/`}')
-        a.menu-item Dashboard
+        a.menu-item(v-bind:class='{"current-menu": verifyRoute() === "dashboard"}') Dashboard
     .menu-navigation.column
       router-link(:to='{ path: `/projetos`}')
-        a.menu-item Projetos
+        a.menu-item(v-bind:class='{"current-menu": verifyRoute() === "projetos"}') Projetos
     .menu-navigation.column
       router-link(:to='{ path: `/clientes`}')
-        a.menu-item Clientes
+        a.menu-item(v-bind:class='{"current-menu": verifyRoute() === "clientes"}') Clientes
     .menu-navigation.column
       router-link(:to='{ path: `/squads`}')
-        a.menu-item Squads
+        a.menu-item(v-bind:class='{"current-menu": verifyRoute() === "squads"}') Squads
     .menu-navigation.column
       router-link(:to='{ path: `/funcionarios`}')
-        a.menu-item Funcionários
+        a.menu-item(v-bind:class='{"current-menu": verifyRoute() === "funcionários"}') Funcionários
     .menu-navigation-dropdown
       .menu-dropdown
         a.menu-dropdown-link
@@ -31,7 +31,7 @@ header.header
             a.menu-dropdown-item Editar Perfil
           router-link(:to='{ path: `/usuarios`}')
             a.menu-dropdown-item Usuários
-          a.menu-dropdown-item Sair
+          a.menu-dropdown-item(@click='logout()') Sair
 
 </template>
 
@@ -54,6 +54,15 @@ export default {
     }
   },
   methods: {
+    verifyRoute () {
+      let route = this.$route.fullPath
+      const isEmployeesRoute = route === '/funcionarios' ? 'funcionários' : null
+      const isSquadsRoute = route === '/squads' ? 'squads' : null
+      const isClientRoute = route === '/clientes' ? 'clientes' : null
+      const isProjectRoute = route === '/projetos' ? 'projetos' : null
+      const isDashboardRoute = route === '/' ? 'dashboard' : null
+      return isDashboardRoute || isProjectRoute || isClientRoute || isSquadsRoute || isEmployeesRoute
+    },
     logout () {
       localstorage.clear()
       window.location.reload()
@@ -78,6 +87,10 @@ export default {
   .menu-navigation {
     text-align: center;
   }
+  .current-menu {
+    padding-bottom: 10px;
+    border-bottom: 3px solid #05bba2;
+  }
   .menu-item {
     display: inline;
     line-height: 6;
@@ -85,6 +98,7 @@ export default {
     &:hover {
       padding-bottom: 10px;
       border-bottom: 3px solid #05bba2;
+      font-weight: bold;
     }
   }
   .menu-navigation-dropdown {
@@ -119,6 +133,7 @@ export default {
         padding: 20px;
         background-color: white;
         top: 80px;
+        z-index: 1;
       }
     }
     .dropdown {

@@ -19,11 +19,27 @@
             .field
               label.label Email:
               .control
-                input.input(type="email" placeholder="exemplo@dominio.com.br", v-model='user.email')
+                input.input(
+                  type="email",
+                  placeholder="exemplo@dominio.com.br",
+                  v-model='user.email',
+                  @input='verifyEmailField(user.email)'
+                  v-bind:class='{"is-danger": isInvalidEmail.status}',
+                  required
+                )
+                span.has-text-danger(v-if='isInvalidEmail.status') {{isInvalidEmail.error}}
             .field
               label.label Senha:
               .control
-                input.input(type="password" placeholder="mínimo 6 caractéres", v-model='user.password')
+                input.input(
+                  type="password",
+                  placeholder="mínimo 6 caractéres",
+                  v-model='user.password'
+                  @input='verifyPasswordField(user.password)'
+                  v-bind:class='{"is-danger": isInvalidPassword.status}',
+                  required
+                )
+                span.has-text-danger(v-if='isInvalidPassword.status') {{isInvalidPassword.error}}
             .field
               .columns
                 .column
@@ -71,10 +87,31 @@ export default {
         message: '',
         type: '',
         open: false
-      }
+      },
+      isInvalidPassword: {status: false, error: ''},
+      isInvalidEmail: {status: false, error: ''}
     }
   },
   methods: {
+    login (user, event) {
+      event.preventDefault()
+      if (this.checkForm()) {
+        localstorage.set('token', 'token')
+        localstorage.set('time', new Date().getTime())
+        localstorage.set('user', this.selectedUser)
+        this.$router.push('/')
+      }
+      // this.$store.dispatch('login', user).then(() => {
+      //   if (this.selectedUser.id) {
+      //     this.$router.push('/')
+      //   } else {
+      //     this.openNotification('Verifique e tente novamente', 'warning', 'Login ou senha incorretos')
+      //   }
+      // })
+    },
+    checkForm () {
+      return this.verifyEmailField(this.user.email) && this.verifyPasswordField(this.user.password)
+    },
     openNotification (message, messageClass, title) {
       this.notification.message = message
       this.notification.messageClass = messageClass
@@ -90,19 +127,33 @@ export default {
     openCadastro () {
       this.$router.push('/cadastro')
     },
-    login (user, event) {
-      event.preventDefault()
-      localstorage.set('token', 'token')
-      localstorage.set('time', new Date().getTime())
-      localstorage.set('user', this.selectedUser)
-      this.$router.push('/')
-      // this.$store.dispatch('login', user).then(() => {
-      //   if (this.selectedUser.id) {
-      //     this.$router.push('/')
-      //   } else {
-      //     this.openNotification('Verifique e tente novamente', 'warning', 'Login ou senha incorretos')
-      //   }
-      // })
+    verifyEmailField (userEmail) {
+      if (userEmail && !userEmail.match('@')) {
+        this.isInvalidEmail.status = true
+        this.isInvalidEmail.error = 'Email inválido, está faltando o @'
+        return false
+      } else if (!userEmail || userEmail.length === 0) {
+        this.isInvalidEmail.status = true
+        this.isInvalidEmail.error = 'Preencha este campo'
+        return false
+      } else {
+        this.isInvalidEmail.status = false
+        return true
+      }
+    },
+    verifyPasswordField (userPassword) {
+      if (userPassword && userPassword.length < 6) {
+        this.isInvalidPassword.status = true
+        this.isInvalidPassword.error = 'A senha deve conter no mínimo 6 caractéres'
+        return false
+      } else if (!userPassword || userPassword.length === 0) {
+        this.isInvalidPassword.status = true
+        this.isInvalidPassword.error = 'Preencha este campo'
+        return false
+      } else {
+        this.isInvalidPassword.status = false
+        return true
+      }
     }
   },
   beforeCreate () {
