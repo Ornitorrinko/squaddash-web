@@ -1,6 +1,6 @@
 import Clients from './Clients'
-import ClientsRegister from './ClientsRegister'
-import ClientsEdit from './ClientsEdit'
+import ClientRegister from './ClientRegister'
+import ClientEdit from './ClientEdit'
 let route = [
   {
     path: '/clientes',
@@ -8,11 +8,11 @@ let route = [
   },
   {
     path: '/clientes/cadastro',
-    component: ClientsRegister
+    component: ClientRegister
   },
   {
     path: '/clientes/editar/:id',
-    component: ClientsEdit
+    component: ClientEdit
   }
 ]
 export default route

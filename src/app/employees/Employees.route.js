@@ -1,6 +1,6 @@
 import Employees from './Employees'
-import EmployeesRegister from './EmployeesRegister'
-import EmployeesEdit from './EmployeesEdit'
+import EmployeeRegister from './EmployeeRegister'
+import EmployeeEdit from './EmployeeEdit'
 let route = [
   {
     path: '/funcionarios',
@@ -8,11 +8,11 @@ let route = [
   },
   {
     path: '/funcionarios/cadastro',
-    component: EmployeesRegister
+    component: EmployeeRegister
   },
   {
     path: '/funcionarios/editar/:id',
-    component: EmployeesEdit
+    component: EmployeeEdit
   }
 ]
 export default route

@@ -125,7 +125,7 @@ export default {
       this.showModal = false
     },
     openCadastro () {
-      this.$router.push('/cadastro')
+      this.$router.push('usuarios/cadastro')
     },
     verifyEmailField (userEmail) {
       if (userEmail && !userEmail.match('@')) {

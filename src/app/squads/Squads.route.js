@@ -1,6 +1,6 @@
 import Squads from './Squads'
-import SquadsRegister from './SquadsRegister'
-import SquadsEdit from './SquadsEdit'
+import SquadRegister from './SquadRegister'
+import SquadEdit from './SquadEdit'
 let route = [
   {
     path: '/squads',
@@ -8,11 +8,11 @@ let route = [
   },
   {
     path: '/squads/cadastro',
-    component: SquadsRegister
+    component: SquadRegister
   },
   {
     path: '/squads/editar/:id',
-    component: SquadsEdit
+    component: SquadEdit
   }
 ]
 export default route

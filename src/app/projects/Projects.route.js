@@ -1,6 +1,6 @@
 import Projects from './Projects'
-import ProjectsRegister from './ProjectsRegister'
-import ProjectsEdit from './ProjectsEdit'
+import ProjectRegister from './ProjectRegister'
+import ProjectEdit from './ProjectEdit'
 let route = [
   {
     path: '/projetos',
@@ -8,11 +8,11 @@ let route = [
   },
   {
     path: '/projetos/cadastro',
-    component: ProjectsRegister
+    component: ProjectRegister
   },
   {
     path: '/projetos/editar/:id',
-    component: ProjectsEdit
+    component: ProjectEdit
   }
 ]
 export default route
