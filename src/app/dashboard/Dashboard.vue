@@ -3,10 +3,34 @@
   .container
     h1.title Dashboard
     .columns
-      CardList#projects.column.mr-5(:items='projects', :title='"Todos os primeiros 4 projetos"')
-      CardList#clients.column.mr-5(:items='clients', :title='"Todos os primeiros 4 clientes"')
-      CardList#squads.column.mr-5(:items='squads', :title='"Todos os primeiros 4 squads"')
-      CardList#employees.column.mr-5(:items='employees', :title='"Todos os primeiros 4 funcionários"')
+      CardList#projects.column.mr-5(
+        :items='projects',
+        :title='"Todos os primeiros 4 projetos"',
+        :type='"projetos"',
+        @onClickItem='getItemOnCardList',
+        @onClickLink='getLinkOnCardList'
+      )
+      CardList#clients.column.mr-5(
+        :items='clients',
+        :title='"Todos os primeiros 4 clientes"',
+        :type='"clientes"',
+        @onClickItem='getItemOnCardList',
+        @onClickLink='getLinkOnCardList'
+      )
+      CardList#squads.column.mr-5(
+        :items='squads',
+        :title='"Todos os primeiros 4 squads"',
+        :type='"squads"',
+        @onClickItem='getItemOnCardList',
+        @onClickLink='getLinkOnCardList'
+      )
+      CardList#employees.column.mr-5(
+        :items='employees',
+        :title='"Todos os primeiros 4 funcionários"',
+        :type='"employees"',
+        @onClickItem='getItemOnCardList',
+        @onClickLink='getLinkOnCardList'
+      )
 </template>
 
 <script>
@@ -36,6 +60,14 @@ export default {
       clients: [],
       squads: [],
       employees: []
+    }
+  },
+  methods: {
+    getItemOnCardList (item, type) {
+      this.$router.push(`/${type}/${item.id}`)
+    },
+    getLinkOnCardList (link) {
+      this.$router.push(`/${link}`)
     }
   },
   mounted () {

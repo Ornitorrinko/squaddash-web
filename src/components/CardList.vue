@@ -1,16 +1,19 @@
 <template lang='pug'>
 .card-list
   .card-list-title
-    span {{title}}
+    span.title-text {{title}}
+    span.external-link(@click='onClickLink(type)')
+      i.fa.fa-external-link
   ol
-    li.card-list-item(v-for='item in newItemsArray', :key='item.id', @click='onClickItem(item)') {{item.name}}
+    li.card-list-item(v-for='item in newItemsArray', :key='item.id', @click='onClickItem(item, type)') {{item.name}}
 </template>
 
 <script>
 export default {
   props: {
     title: {type: String, default: ''},
-    items: {type: Array, default: () => []}
+    items: {type: Array, default: () => []},
+    type: {type: String, default: ''}
   },
   data () {
     return {
@@ -23,8 +26,11 @@ export default {
     }
   },
   methods: {
-    onClickItem (item) {
-      this.$emit('onClickItem', item)
+    onClickItem (item, type) {
+      this.$emit('onClickItem', item, type)
+    },
+    onClickLink (link) {
+      this.$emit('onClickLink', link)
     },
     assignValueToNewItemsArray (items) {
       let count = 0
@@ -47,7 +53,18 @@ export default {
   border: 1px solid #00b89c;
   border-radius: 10px;
   .card-list-title {
-    font-weight: bold;
+    display: flex;
+    .title-text {
+      font-weight: bold;
+    }
+    .external-link {
+      color: #008571;
+      cursor: pointer;
+      &:hover {
+        font-weight: bold;
+        font-size: 20px;
+      }
+    }
   }
   ol {
     padding: 10px;
