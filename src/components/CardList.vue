@@ -1,6 +1,5 @@
 <template lang='pug'>
 .card-list
-  
   .card-list-title
     span {{title}}
   ol
