@@ -60,14 +60,9 @@
       "name": "Genova Ecosystem",
       "expense": 2000,
       "profit": 20000,
-      "client": {
-        "id": 1,
-        "name": "Spread",
-        "email": "vinicius.mesquita@spread.com.br",
-        "status": true,
-        "created_at": "2018-05-09 00:00:00",
-        "updated_at": "2018-05-09 00:00:00"
-      },
+      "status": true,
+      "created_at": "2018-05-09 00:00:00",
+      "updated_at": "2018-05-09 00:00:00",
       "squad": {
         "id": 1,
         "name": "Genova",
@@ -86,9 +81,159 @@
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       },
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "link",
+        "status": true,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Somos Educação",
+      "expense": 2000,
+      "profit": 20000,
       "status": true,
       "created_at": "2018-05-09 00:00:00",
-      "updated_at": "2018-05-09 00:00:00"
+      "updated_at": "2018-05-09 00:00:00",
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "link",
+        "status": true,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Eztravel",
+      "expense": 2000,
+      "profit": 20000,
+      "status": true,
+      "created_at": "2018-05-09 00:00:00",
+      "updated_at": "2018-05-09 00:00:00",
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "link",
+        "status": true,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Atlas",
+      "expense": 2000,
+      "profit": 20000,
+      "status": true,
+      "created_at": "2018-05-09 00:00:00",
+      "updated_at": "2018-05-09 00:00:00",
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "link",
+        "status": true,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Observatório",
+      "expense": 2000,
+      "profit": 20000,
+      "status": true,
+      "created_at": "2018-05-09 00:00:00",
+      "updated_at": "2018-05-09 00:00:00",
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "link",
+        "status": true,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      }
     }
   ]
 }
