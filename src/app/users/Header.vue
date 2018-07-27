@@ -3,7 +3,7 @@ header.header
   nav.menu.columns
     .menu-brand.column
       router-link(:to='{ path: `/`}')
-        img(src='../../assets/SquadDash-logo.png')
+        img(src='../../assets/SquadDash-logo.png', alt='squad dash logo')
     .menu-navigation.column
       router-link(:to='{ path: `/`}')
         a.menu-item(v-bind:class='{"current-menu": verifyRoute() === "dashboard"}') Dashboard
@@ -85,6 +85,7 @@ export default {
 .header {
   border-bottom: 1px solid #00d1b2;
   .menu-navigation {
+    font-size: 20px;
     text-align: center;
   }
   .current-menu {
@@ -105,8 +106,10 @@ export default {
     display: flex;
     text-align: left;
     width: 15%;
+    font-size: 20px;
   }
   .menu-dropdown {
+    font-size: 20px;
     cursor: pointer;
     .menu-dropdown-link {
       color: black;

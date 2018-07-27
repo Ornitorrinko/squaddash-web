@@ -1,11 +1,10 @@
-<template lang='pug'>
-.card-list
-  .card-list-title
-    span.title-text {{title}}
-    span.external-link(@click='onClickLink(type)')
-      i.fa.fa-external-link
-  ol
-    li.card-list-item(v-for='item in newItemsArray', :key='item.id', @click='onClickItem(item, type)') {{item.name}}
+<template>
+<div class="card-list">
+  <div class="card-list-title"><span class="title-text">{{title}}</span><span @click="onClickLink(type)" :title="`ir para ${type}`" class="external-link"><i class="fa fa-external-link"></i></span></div>
+  <ol>
+    <li v-for="item in newItemsArray" :key="item.id" :title="`visualizar ${item.name}`" @click="onClickItem(item, type)" class="card-list-item">{{item.name}}</li>
+  </ol>
+</div>
 </template>
 
 <script>
@@ -54,6 +53,7 @@ export default {
   border-radius: 10px;
   .card-list-title {
     display: flex;
+    justify-content: space-between;
     .title-text {
       font-weight: bold;
     }
