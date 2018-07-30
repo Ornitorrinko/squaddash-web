@@ -6,7 +6,7 @@ import router from './router/index'
 import store from './store'
 import http from 'axios'
 import endpoint from './app.config'
-
+import './filters'
 Vue.config.productionTip = false
 
 http.defaults.baseURL = endpoint
