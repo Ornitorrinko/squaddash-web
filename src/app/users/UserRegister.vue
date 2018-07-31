@@ -18,7 +18,7 @@
           v-model='securityPassword'
           v-bind:class='{"is-danger": securityPassword === "ornit0quatro"}'
         )
-        span.has-text-danger(v-if='!securityPassword && securityPassword.length === 0') Preencha este campo
+        span.has-text-danger(v-if='!securityPassword && securityPassword.length === 0') Preencha este campo obrigatório
         span.has-text-danger(v-else-if='securityPassword !== "ornit0quatro"') Senha errada
       .control
         a.button.is-light.fullWidth(@click='cancel()') Cancelar
@@ -195,7 +195,7 @@ export default {
         return false
       } else if (!userName || userName.length === 0) {
         this.isInvalidName.status = true
-        this.isInvalidName.error = 'Preencha este campo'
+        this.isInvalidName.error = 'Preencha este campo obrigatório'
         return false
       } else {
         this.isInvalidName.status = false
@@ -209,7 +209,7 @@ export default {
         return false
       } else if (!userEmail || userEmail.length === 0) {
         this.isInvalidEmail.status = true
-        this.isInvalidEmail.error = 'Preencha este campo'
+        this.isInvalidEmail.error = 'Preencha este campo obrigatório'
         return false
       } else {
         this.isInvalidEmail.status = false
@@ -223,7 +223,7 @@ export default {
         return false
       } else if (!userPassword || userPassword.length === 0) {
         this.isInvalidPassword.status = true
-        this.isInvalidPassword.error = 'Preencha este campo'
+        this.isInvalidPassword.error = 'Preencha este campo obrigatório'
         return false
       } else {
         this.isInvalidPassword.status = false
@@ -237,7 +237,7 @@ export default {
         return false
       } else if (!confirmPassword || confirmPassword.length === 0) {
         this.isInvalidConfirmPassword.status = true
-        this.isInvalidConfirmPassword.error = 'Preencha este campo'
+        this.isInvalidConfirmPassword.error = 'Preencha este campo obrigatório'
         return false
       } else {
         this.isInvalidConfirmPassword.status = false

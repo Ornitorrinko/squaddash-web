@@ -3,28 +3,28 @@
   .container
     h1.title Dashboard
     .columns
-      CardList#projects.column.mr-5(
+      CardList#projects.column.margin-right-5(
         :items='projects',
         :title='"Todos os primeiros 4 projetos"',
         :type='"projetos"',
         @onClickItem='getItemOnCardList',
         @onClickLink='getLinkOnCardList'
       )
-      CardList#clients.column.mr-5(
+      CardList#clients.column.margin-right-5(
         :items='clients',
         :title='"Todos os primeiros 4 clientes"',
         :type='"clientes"',
         @onClickItem='getItemOnCardList',
         @onClickLink='getLinkOnCardList'
       )
-      CardList#squads.column.mr-5(
+      CardList#squads.column.margin-right-5(
         :items='squads',
         :title='"Todos os primeiros 4 squads"',
         :type='"squads"',
         @onClickItem='getItemOnCardList',
         @onClickLink='getLinkOnCardList'
       )
-      CardList#employees.column.mr-5(
+      CardList#employees.column.margin-right-5(
         :items='employees',
         :title='"Todos os primeiros 4 funcionários"',
         :type='"employees"',

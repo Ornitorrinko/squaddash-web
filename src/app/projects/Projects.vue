@@ -2,7 +2,7 @@
 .projects
   .container
     h1.title Projetos
-    button.button.is-info.is-outlined Criar projeto
+    router-link.button.is-squadDash.is-outlined.font-size-20(:to='{ path: `/projetos/cadastro`}') Criar projeto
   .container
     .table
       table.table-content
