@@ -6,8 +6,9 @@
       "email": "mateus@ornito.com.br",
       "profile_photo": "http://res.cloudinary.com/ornito-media/image/upload/v1531948013/squaddash/lor77kbxdgsmkwrtypdq.jpg",
       "password": "123456",
-      "status": true,
       "role": "admin",
+      "status": true,
+      "deleted": false,
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00"
     }
@@ -17,8 +18,9 @@
       "id": 1,
       "name": "Spread",
       "email": "vinicius.mesquita@spread.com.br",
-      "logo": "link",
+      "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
       "status": true,
+      "deleted": false,
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00"
     }
@@ -30,6 +32,7 @@
       "salary": 2000,
       "modality_of_contracting": "CLT",
       "status": true,
+      "deleted": false,
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00"
     }
@@ -38,6 +41,7 @@
     {
       "id": 1,
       "name": "Genova",
+      "cost": 2000,
       "employees": [
         {
           "id": 1,
@@ -45,11 +49,13 @@
           "salary": 2000,
           "modality_of_contracting": "CLT",
           "status": true,
+          "deleted": false,
           "created_at": "2018-05-09 00:00:00",
           "updated_at": "2018-05-09 00:00:00"
         }
       ],
       "status": true,
+      "deleted": false,
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00"
     }
@@ -58,14 +64,20 @@
     {
       "id": 1,
       "name": "Genova Ecosystem",
-      "expense": 2000,
+      "cost": 2000,
       "profit": 20000,
+      "estimated_value": 1000,
+      "estimated_time": {"type": "dias", "time": 90},
       "status": true,
+      "begin_date": "2018-05-09 00:00:00",
+      "finish_date": "2018-05-09 00:00:00",
+      "deleted": false,
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00",
       "squad": {
         "id": 1,
         "name": "Genova",
+        "cost": 2000,
         "employees": [
           {
             "id": 1,
@@ -73,11 +85,13 @@
             "salary": 2000,
             "modality_of_contracting": "CLT",
             "status": true,
+            "deleted": false,
             "created_at": "2018-05-09 00:00:00",
             "updated_at": "2018-05-09 00:00:00"
           }
         ],
         "status": true,
+        "deleted": false,
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       },
@@ -85,8 +99,9 @@
         "id": 1,
         "name": "Spread",
         "email": "vinicius.mesquita@spread.com.br",
-        "logo": "link",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
         "status": true,
+        "deleted": false,
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       }
@@ -94,14 +109,20 @@
     {
       "id": 2,
       "name": "Somos Educação",
-      "expense": 2000,
+      "cost": 2000,
       "profit": 20000,
+      "estimated_value": 1000,
+      "estimated_time": {"type": "meses", "time": 90},
       "status": true,
+      "begin_date": "2018-05-09 00:00:00",
+      "finish_date": "2018-05-09 00:00:00",
+      "deleted": false,
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00",
       "squad": {
         "id": 1,
         "name": "Genova",
+        "cost": 2000,
         "employees": [
           {
             "id": 1,
@@ -109,11 +130,13 @@
             "salary": 2000,
             "modality_of_contracting": "CLT",
             "status": true,
+            "deleted": false,
             "created_at": "2018-05-09 00:00:00",
             "updated_at": "2018-05-09 00:00:00"
           }
         ],
         "status": true,
+        "deleted": false,
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       },
@@ -121,8 +144,9 @@
         "id": 1,
         "name": "Spread",
         "email": "vinicius.mesquita@spread.com.br",
-        "logo": "link",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
         "status": true,
+        "deleted": false,
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       }
@@ -130,14 +154,20 @@
     {
       "id": 3,
       "name": "Eztravel",
-      "expense": 2000,
+      "cost": 2000,
       "profit": 20000,
+      "estimated_value": 1000,
+      "estimated_time": {"type": "anos", "time": 90},
       "status": true,
+      "begin_date": "2018-05-09 00:00:00",
+      "finish_date": "2018-05-09 00:00:00",
+      "deleted": false,
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00",
       "squad": {
         "id": 1,
         "name": "Genova",
+        "cost": 2000,
         "employees": [
           {
             "id": 1,
@@ -145,11 +175,13 @@
             "salary": 2000,
             "modality_of_contracting": "CLT",
             "status": true,
+            "deleted": false,
             "created_at": "2018-05-09 00:00:00",
             "updated_at": "2018-05-09 00:00:00"
           }
         ],
         "status": true,
+        "deleted": false,
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       },
@@ -157,8 +189,9 @@
         "id": 1,
         "name": "Spread",
         "email": "vinicius.mesquita@spread.com.br",
-        "logo": "link",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
         "status": true,
+        "deleted": false,
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       }
@@ -166,14 +199,20 @@
     {
       "id": 4,
       "name": "Atlas",
-      "expense": 2000,
+      "cost": 2000,
       "profit": 20000,
       "status": true,
+      "begin_date": "2018-05-09 00:00:00",
+      "finish_date": "2018-05-09 00:00:00",
+      "deleted": false,
+      "estimated_value": 1000,
+      "estimated_time": {"type": "horas", "time": 90},
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00",
       "squad": {
         "id": 1,
         "name": "Genova",
+        "cost": 2000,
         "employees": [
           {
             "id": 1,
@@ -181,11 +220,13 @@
             "salary": 2000,
             "modality_of_contracting": "CLT",
             "status": true,
+            "deleted": false,
             "created_at": "2018-05-09 00:00:00",
             "updated_at": "2018-05-09 00:00:00"
           }
         ],
         "status": true,
+        "deleted": false,
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       },
@@ -193,8 +234,9 @@
         "id": 1,
         "name": "Spread",
         "email": "vinicius.mesquita@spread.com.br",
-        "logo": "link",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
         "status": true,
+        "deleted": false,
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       }
@@ -202,14 +244,20 @@
     {
       "id": 5,
       "name": "Observatório",
-      "expense": 2000,
+      "cost": 2000,
       "profit": 20000,
+      "estimated_value": 1000,
+      "estimated_time": {"type": "horas", "time": 90},
       "status": true,
+      "begin_date": "2018-05-09 00:00:00",
+      "finish_date": "2018-05-09 00:00:00",
+      "deleted": false,
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00",
       "squad": {
         "id": 1,
         "name": "Genova",
+        "cost": 2000,
         "employees": [
           {
             "id": 1,
@@ -217,11 +265,13 @@
             "salary": 2000,
             "modality_of_contracting": "CLT",
             "status": true,
+            "deleted": false,
             "created_at": "2018-05-09 00:00:00",
             "updated_at": "2018-05-09 00:00:00"
           }
         ],
         "status": true,
+        "deleted": false,
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       },
@@ -229,8 +279,9 @@
         "id": 1,
         "name": "Spread",
         "email": "vinicius.mesquita@spread.com.br",
-        "logo": "link",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
         "status": true,
+        "deleted": false,
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       }

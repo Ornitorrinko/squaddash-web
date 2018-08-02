@@ -4,6 +4,9 @@
 .halfWidth {
   width: 50%;
 }
+.oneFourthWidth {
+  width: 75%;
+}
 .justify-vertical {
   justify-content: center;
 }
@@ -53,7 +56,6 @@ input[type=checkbox]:checked + .btn-toggle {
 }
 .table {
   display: flex;
-  font-size: 24px;
   margin-top: 2%;
   border: 1px solid #01BCA2;
   border-radius: 10px;
@@ -73,9 +75,12 @@ input[type=checkbox]:checked + .btn-toggle {
 .actions {
   color: #2D9CDB;
   cursor: pointer;
+  font-size: 20px;
+}
+.actions-link {
+  margin-right: 5px;
 }
 .actions-link:hover {
-  font-size: 30px;
   font-weight: bold;
 }
 .is-squadDash {
@@ -90,4 +95,12 @@ input[type=checkbox]:checked + .btn-toggle {
 
 .font-size-20 {
   font-size: 20px;
+}
+.image-100 {
+  width: 50px;
+  height: 50px;
+}
+.squadDash-input {
+  border: none;
+  border-bottom: 1px solid #01BCA2;
 }

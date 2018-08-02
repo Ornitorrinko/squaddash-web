@@ -40,10 +40,8 @@ export default {
   data () {
     return {
       project: {
-        name: '',
-        profit: 0,
-        client: {},
-        squad: {}
+        profit: 0.00,
+        estimated_time: {}
       },
       clients: [],
       squads: [],
@@ -52,13 +50,12 @@ export default {
   },
   methods: {
     createProject (project) {
-      console.log('saveProject', project)
     },
     backToProjects () {
-      console.log('Voltar')
+      this.$router.push('/projetos')
     }
   },
-  created () {
+  mounted () {
     this.$store.dispatch('getAllSquads').then(() => {
       this.squads = _.clone(this.allSquads)
     })
