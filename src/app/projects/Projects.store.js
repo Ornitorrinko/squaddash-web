@@ -8,7 +8,7 @@ const state = {
 }
 const mutations = {
   'CREATE_PROJECT_SUCCESS' (state) {
-    state.message = 'Usuário criado com sucesso'
+    state.message = 'Projeto criado com sucesso'
     state.messageClass = 'success'
   },
   'CREATE_PROJECT_FAIL' (state, {response}) {
@@ -16,14 +16,37 @@ const mutations = {
     state.message = 'Algo de errado não deu certo'
     state.messageClass = 'danger'
   },
+  'EDIT_PROJECT_SUCCESS' (state) {
+    state.message = 'Projeto salvo com sucesso'
+    state.messageClass = 'success'
+  },
+  'EDIT_PROJECT_FAIL' (state, {response}) {
+    console.log('Deu erro', response)
+    state.message = 'Algo de errado não deu certo'
+    state.messageClass = 'danger'
+  },
   'GET_ALL_PROJECTS_SUCCESS' (state, {projects}) {
     state.allProjects = projects
+  },
+  'GET_ALL_PROJECTS_FAIL' (state, {response}) {
+    console.log('Deu erro', response)
+    state.message = 'Algo de errado não deu certo'
+    state.messageClass = 'danger'
+  },
+  'GET_PROJECT_BY_ID_SUCCESS' (state, {project}) {
+    state.selectedProject = project
+  },
+  'GET_PROJECT_BY_ID_FAIL' (state, {response}) {
+    console.log('Deu erro', response)
+    state.message = 'Algo de errado não deu certo'
+    state.messageClass = 'danger'
   }
 }
 const actions = {
   async createProject ({commit}, project) {
     commit('LOADING')
     project.status = true
+    project.deleted = false
     project.updated_at = project.created_at = Date.now()
     let response = await service.createProject(project)
     if (response.data.id) {
@@ -34,6 +57,18 @@ const actions = {
       commit('CREATE_PROEJCT_FAIL', {response})
     }
   },
+  async editProject ({commit}, project) {
+    commit('LOADING')
+    project.updated_at = Date.now()
+    let response = await service.editProject(project)
+    if (response.data.id) {
+      commit('LOADING')
+      commit('EDIT_PROJECT_SUCCESS')
+    } else {
+      commit('LOADING')
+      commit('EDIT_PROEJCT_FAIL', {response})
+    }
+  },
   async getAllProjects ({commit}) {
     let response = await service.getAllProjects()
     let projects = response.data
@@ -41,6 +76,15 @@ const actions = {
       commit('GET_ALL_PROJECTS_SUCCESS', {projects})
     } else {
       commit('GET_ALL_PROJECTS_FAIL')
+    }
+  },
+  async getProjectById ({commit}, id) {
+    let response = await service.getProjectById(id)
+    let project = response.data
+    if (project.id) {
+      commit('GET_PROJECT_BY_ID_SUCCESS', {project})
+    } else {
+      commit('GET_PROJECT_BY_ID_FAIL', {response})
     }
   }
 }

@@ -1,21 +1,31 @@
 <template lang='pug'>
+.project-register
+  Notification(
+    :title='notification.title',
+    :message='notification.message',
+    :type='notification.messageClass',
+    :open='notification.open',
+    :duration='3500'
+  )
   ProjectForm(
     :projectProp='project'
     :clientsProp='clients',
     :squadsProp='squads',
-    :notification='notification',
-    :loading='loading'
-    @onOkClick='createProject'
-    @onCancelClick='backToProjects'
+    :loading='loading',
+    :formTitle='"Cadastrar projeto"'
+    @onOkClick='createProject',
+    @onCancelClick='cancel'
   )
 </template>
 
 <script>
+import Notification from '../../components/Notification'
 import ProjectForm from './ProjectForm'
 import _ from 'lodash'
 export default {
   components: {
-    ProjectForm
+    ProjectForm,
+    Notification
   },
   computed: {
     allSquads () {
@@ -45,14 +55,30 @@ export default {
       },
       clients: [],
       squads: [],
-      notification: {}
+      notification: {
+        open: false
+      }
     }
   },
   methods: {
     createProject (project) {
+      this.$store.dispatch('createProject', project).then(() => {
+        if (this.messageClass === 'success') {
+          this.openNotification(this.message, this.messageClass, this.title)
+          setTimeout(() => {
+            this.cancel()
+          }, 3500)
+        }
+      })
     },
-    backToProjects () {
+    cancel () {
       this.$router.push('/projetos')
+    },
+    openNotification (message, messageClass, title) {
+      this.notification.message = message
+      this.notification.messageClass = messageClass
+      this.notification.title = title
+      this.notification.open = true
     }
   },
   mounted () {
@@ -67,5 +93,7 @@ export default {
 </script>
 
 <style lang='scss'>
-
+.project-register {
+  margin-top: 2%;
+}
 </style>

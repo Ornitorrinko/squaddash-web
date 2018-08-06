@@ -67,13 +67,16 @@
       "cost": 2000,
       "profit": 20000,
       "estimated_value": 1000,
-      "estimated_time": {"type": "dias", "time": 90},
+      "estimated_time": {
+        "type": "meses",
+        "time": "901"
+      },
       "status": true,
-      "begin_date": "2018-05-09 00:00:00",
-      "finish_date": "2018-05-09 00:00:00",
+      "begin_date": "2018-08-20T03:00:00.000Z",
+      "finish_date": "2093-09-20T03:00:00.000Z",
       "deleted": false,
       "created_at": "2018-05-09 00:00:00",
-      "updated_at": "2018-05-09 00:00:00",
+      "updated_at": 1533579038372,
       "squad": {
         "id": 1,
         "name": "Genova",
@@ -112,7 +115,10 @@
       "cost": 2000,
       "profit": 20000,
       "estimated_value": 1000,
-      "estimated_time": {"type": "meses", "time": 90},
+      "estimated_time": {
+        "type": "meses",
+        "time": 90
+      },
       "status": true,
       "begin_date": "2018-05-09 00:00:00",
       "finish_date": "2018-05-09 00:00:00",
@@ -157,7 +163,10 @@
       "cost": 2000,
       "profit": 20000,
       "estimated_value": 1000,
-      "estimated_time": {"type": "anos", "time": 90},
+      "estimated_time": {
+        "type": "anos",
+        "time": 90
+      },
       "status": true,
       "begin_date": "2018-05-09 00:00:00",
       "finish_date": "2018-05-09 00:00:00",
@@ -206,7 +215,10 @@
       "finish_date": "2018-05-09 00:00:00",
       "deleted": false,
       "estimated_value": 1000,
-      "estimated_time": {"type": "horas", "time": 90},
+      "estimated_time": {
+        "type": "horas",
+        "time": 90
+      },
       "created_at": "2018-05-09 00:00:00",
       "updated_at": "2018-05-09 00:00:00",
       "squad": {
@@ -247,7 +259,10 @@
       "cost": 2000,
       "profit": 20000,
       "estimated_value": 1000,
-      "estimated_time": {"type": "horas", "time": 90},
+      "estimated_time": {
+        "type": "horas",
+        "time": 90
+      },
       "status": true,
       "begin_date": "2018-05-09 00:00:00",
       "finish_date": "2018-05-09 00:00:00",
@@ -285,6 +300,822 @@
         "created_at": "2018-05-09 00:00:00",
         "updated_at": "2018-05-09 00:00:00"
       }
+    },
+    {
+      "profit": 88000,
+      "estimated_time": {
+        "type": "dias",
+        "time": "180"
+      },
+      "cost": 2000,
+      "name": "Polo",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "90000",
+      "begin_date": "2019-01-30T02:00:00.000Z",
+      "finish_date": "2019-01-30T02:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533178601106,
+      "updated_at": 1533178601106,
+      "id": 6
+    },
+    {
+      "profit": 88000,
+      "estimated_time": {
+        "type": "horas",
+        "time": "90"
+      },
+      "cost": 2000,
+      "name": "Ornito Squad Dash",
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "90000",
+      "begin_date": "2018-08-01T03:00:00.000Z",
+      "finish_date": "2018-08-04T21:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533298889219,
+      "updated_at": 1533298889219,
+      "id": 7
+    },
+    {
+      "profit": 9802194,
+      "estimated_time": {
+        "type": "horas",
+        "time": "90"
+      },
+      "cost": 2000,
+      "name": "Teste",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "9804194",
+      "begin_date": "2018-08-01T03:00:00.000Z",
+      "finish_date": "2018-08-04T21:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533299011986,
+      "updated_at": 1533299011986,
+      "id": 8
+    },
+    {
+      "profit": 7090,
+      "estimated_time": {
+        "type": "horas",
+        "time": "90"
+      },
+      "cost": 2000,
+      "name": "Teste1",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "9090",
+      "begin_date": "2018-08-01T03:00:00.000Z",
+      "finish_date": "2018-08-04T21:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533299269818,
+      "updated_at": 1533299269818,
+      "id": 9
+    },
+    {
+      "profit": 46547,
+      "estimated_time": {
+        "type": "horas",
+        "time": "90"
+      },
+      "cost": 2000,
+      "name": "Teste 8000",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "48547",
+      "begin_date": "2018-08-06T03:00:00.000Z",
+      "finish_date": "2018-08-09T21:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533576752803,
+      "updated_at": 1533576752803,
+      "id": 10
+    },
+    {
+      "profit": 2840,
+      "estimated_time": {
+        "type": "horas",
+        "time": "90"
+      },
+      "cost": 2000,
+      "name": "teste 4",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "4840",
+      "begin_date": "2018-08-06T03:00:00.000Z",
+      "finish_date": "2018-08-09T21:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533576959795,
+      "updated_at": 1533576959795,
+      "id": 11
+    },
+    {
+      "profit": -1010,
+      "estimated_time": {
+        "time": "90",
+        "type": "horas"
+      },
+      "cost": 2000,
+      "name": "Teste 2",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "0990",
+      "begin_date": "2018-08-06T03:00:00.000Z",
+      "finish_date": "2018-08-09T21:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533576997620,
+      "updated_at": 1533576997620,
+      "id": 12
+    },
+    {
+      "profit": 5987,
+      "estimated_time": {
+        "type": "meses",
+        "time": "40"
+      },
+      "cost": 2000,
+      "name": "Teste 3",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "7987",
+      "begin_date": "2018-08-16T03:00:00.000Z",
+      "finish_date": "2021-12-16T02:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533577074519,
+      "updated_at": 1533577074519,
+      "id": 13
+    },
+    {
+      "profit": 82084,
+      "estimated_time": {
+        "type": "horas",
+        "time": "56"
+      },
+      "cost": 2000,
+      "name": "Teste 5",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "84084",
+      "begin_date": "2018-08-06T03:00:00.000Z",
+      "finish_date": "2018-08-08T11:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533577166083,
+      "updated_at": 1533577166083,
+      "id": 14
+    },
+    {
+      "profit": 121123,
+      "estimated_time": {
+        "type": "horas",
+        "time": "43"
+      },
+      "cost": 2000,
+      "name": "Teste 7",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "123123",
+      "begin_date": "2018-08-22T03:00:00.000Z",
+      "finish_date": "2018-08-23T22:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533577260515,
+      "updated_at": 1533577260515,
+      "id": 15
+    },
+    {
+      "profit": 121123,
+      "estimated_time": {
+        "type": "dias",
+        "time": "6"
+      },
+      "cost": 2000,
+      "name": "Teste 6",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "123123",
+      "begin_date": "2018-08-07T03:00:00.000Z",
+      "finish_date": "2018-08-08T03:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533577358237,
+      "updated_at": 1533577358237,
+      "id": 16
+    },
+    {
+      "profit": -1859,
+      "estimated_time": {
+        "type": "horas",
+        "time": "14"
+      },
+      "cost": 2000,
+      "name": "Teste 8",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "141",
+      "begin_date": "2018-08-13T03:00:00.000Z",
+      "finish_date": "2018-08-13T17:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533577456998,
+      "updated_at": 1533577456998,
+      "id": 17
+    },
+    {
+      "profit": 2040,
+      "estimated_time": {
+        "type": "horas",
+        "time": "0909"
+      },
+      "cost": 2000,
+      "name": "Teste 9",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "04040",
+      "begin_date": "2018-08-06T03:00:00.000Z",
+      "finish_date": "2018-09-13T00:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533577530331,
+      "updated_at": 1533577530331,
+      "id": 18
+    },
+    {
+      "profit": 5700,
+      "estimated_time": {
+        "type": "horas",
+        "time": "120"
+      },
+      "cost": 2000,
+      "name": "Teste 10",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "007700",
+      "begin_date": "2018-08-06T03:00:00.000Z",
+      "finish_date": "2018-08-11T03:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533577603663,
+      "updated_at": 1533577603663,
+      "id": 19
+    },
+    {
+      "profit": -1300,
+      "estimated_time": {
+        "type": "horas",
+        "time": "90"
+      },
+      "cost": 2000,
+      "name": "Teste 11",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "700",
+      "begin_date": "2018-08-06T03:00:00.000Z",
+      "finish_date": "2018-08-09T21:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533577728466,
+      "updated_at": 1533577728466,
+      "id": 20
+    },
+    {
+      "profit": 6000,
+      "estimated_time": {
+        "type": "dias",
+        "time": "90"
+      },
+      "cost": 2000,
+      "name": "teste 12",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "8000",
+      "begin_date": "2018-08-06T03:00:00.000Z",
+      "finish_date": "2018-10-30T03:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533577918788,
+      "updated_at": 1533577918788,
+      "id": 21
+    },
+    {
+      "profit": 3000,
+      "estimated_time": {
+        "type": "dias",
+        "time": "90"
+      },
+      "cost": 2000,
+      "name": "Teste 13",
+      "client": {
+        "id": 1,
+        "name": "Spread",
+        "email": "vinicius.mesquita@spread.com.br",
+        "logo": "https://static.wixstatic.com/media/540efb_3c5ead0633cf10e5023bad942aaf9869.png",
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "squad": {
+        "id": 1,
+        "name": "Genova",
+        "cost": 2000,
+        "employees": [
+          {
+            "id": 1,
+            "name": "Manolo",
+            "salary": 2000,
+            "modality_of_contracting": "CLT",
+            "status": true,
+            "deleted": false,
+            "created_at": "2018-05-09 00:00:00",
+            "updated_at": "2018-05-09 00:00:00"
+          }
+        ],
+        "status": true,
+        "deleted": false,
+        "created_at": "2018-05-09 00:00:00",
+        "updated_at": "2018-05-09 00:00:00"
+      },
+      "estimated_value": "5000",
+      "begin_date": "2018-08-06T03:00:00.000Z",
+      "finish_date": "2018-10-30T03:00:00.000Z",
+      "status": true,
+      "deleted": false,
+      "created_at": 1533577973862,
+      "updated_at": 1533577973862,
+      "id": 22
     }
   ]
 }

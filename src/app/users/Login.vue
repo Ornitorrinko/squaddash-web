@@ -67,7 +67,7 @@
 
 <script>
 import Notification from '../../components/Notification'
-import localstorage from '../../utils/localstorage'
+import Utils from '../../utils/index'
 export default {
   components: {
     Notification
@@ -96,9 +96,9 @@ export default {
     login (user, event) {
       event.preventDefault()
       if (this.checkForm()) {
-        localstorage.set('token', 'token')
-        localstorage.set('time', new Date().getTime())
-        localstorage.set('user', this.selectedUser)
+        Utils.localstorage.set('token', 'token')
+        Utils.localstorage.set('time', new Date().getTime())
+        Utils.localstorage.set('user', this.selectedUser)
         this.$router.push('/')
       }
       // this.$store.dispatch('login', user).then(() => {

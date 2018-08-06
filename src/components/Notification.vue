@@ -52,7 +52,7 @@ export default {
 <style>
 .notification {
   position: fixed;
-  z-index: 1;
+  z-index: 99;
   right: 0;
   top: 10px;
 }

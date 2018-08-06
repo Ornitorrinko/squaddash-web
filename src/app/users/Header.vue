@@ -36,7 +36,7 @@ header.header
 </template>
 
 <script>
-import localstorage from '../../utils/localstorage'
+import Utils from '../../utils/index'
 export default {
   data () {
     return {
@@ -64,7 +64,7 @@ export default {
       return isDashboardRoute || isProjectRoute || isClientRoute || isSquadsRoute || isEmployeesRoute
     },
     logout () {
-      localstorage.clear()
+      Utils.localstorage.clear()
       window.location.reload()
     },
     verifyAuthenticatedUser (loggedTime) {
@@ -136,7 +136,7 @@ export default {
         padding: 20px;
         background-color: white;
         top: 80px;
-        z-index: 1;
+        z-index: 99;
       }
     }
     .dropdown {

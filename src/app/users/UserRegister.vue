@@ -105,7 +105,7 @@
 <script>
 import Notification from '../../components/Notification'
 import PhotoUpload from '../../components/PhotoUpload'
-import localstorage from '../../utils/localstorage'
+import Utils from '../../utils/index'
 export default {
   components: {
     Notification,
@@ -246,7 +246,7 @@ export default {
     }
   },
   beforeCreate () {
-    if (!localstorage.get('user')) {
+    if (!Utils.localstorage.get('user')) {
       this.$store.dispatch('setHeader')
     }
   }

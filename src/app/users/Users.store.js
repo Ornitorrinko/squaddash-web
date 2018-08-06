@@ -1,5 +1,5 @@
 import service from './Users.service'
-import localstorage from '../../utils/localstorage'
+import Utils from '../../utils/index'
 const state = {
   allUsers: [],
   selectedUser: {
@@ -19,9 +19,9 @@ const state = {
 }
 const mutations = {
   'LOGIN_SUCCESS' (state, {result}) {
-    localstorage.set('token', result.token)
-    localstorage.set('time', new Date().getTime())
-    localstorage.set('user', result.user)
+    Utils.localstorage.set('token', result.token)
+    Utils.localstorage.set('time', new Date().getTime())
+    Utils.localstorage.set('user', result.user)
   },
   'LOGIN_FAIL' (state, {response}) {
     console.log('Deu erro', response)

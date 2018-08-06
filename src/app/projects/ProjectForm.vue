@@ -1,143 +1,133 @@
 <template lang='pug'>
-.project-register
-  Notification(
-    :title='notification.title',
-    :message='notification.message',
-    :type='notification.messageClass',
-    :open='notification.open',
-    :duration='3500'
-  )
-  .container
-    h1.title Cadastro de projeto
-    form.project-form
-      .field
-        label.label Nome do projeto:
+.container
+  h1.title {{formTitle}}
+  form.project-form
+    .field
+      label.label Nome do projeto:
+      .control
+        input#name.input(
+          type='text',
+          placeholder="Projeto exemplo",
+          v-model='project.name',
+          v-bind:class='{"is-danger": isInvalidName.status}',
+          @input='verifyNameField(project.name)'
+        )
+        span.has-text-danger(v-if='isInvalidName.status') {{isInvalidName.error}}
+    .field
+      label.label Cliente:
+      .control
+        .select.fullWidth(v-bind:class='{"is-danger": isInvalidClient.status}')
+          select.fullWidth(v-model='project.client', @change='verifyClientField(project.client)')
+            option(disabled selected value='null') Selecione o cliente
+            option(v-for='client in clients', :key='client.id', :value='client') {{client.name}}
         .control
-          input#name.input(
-            type='text',
-            placeholder="Projeto exemplo",
-            v-model='project.name',
-            v-bind:class='{"is-danger": isInvalidName.status}',
-            @input='verifyNameField(project.name)'
-          )
-          span.has-text-danger(v-if='isInvalidName.status') {{isInvalidName.error}}
-      .field
-        label.label Cliente:
+          span.has-text-danger(v-if='isInvalidClient.status') {{isInvalidClient.error}}
+    .field
+      label.label Squad:
+      .control
+        .select.fullWidth(v-bind:class='{"is-danger": isInvalidSquad.status}')
+          select.fullWidth(v-model='project.squad', @change='verifySquadField(project.squad)')
+            option(disabled selected value='null') Selecione o squad
+            option(v-for='squad in squads', :key='squad.id', :value='squad') {{squad.name}}
         .control
-          .select.fullWidth(v-bind:class='{"is-danger": isInvalidClient.status}')
-            select.fullWidth(v-model='project.client', @input='verifyClientField(project.client)')
-              option(disabled selected value='null') Selecione o cliente
-              option(v-for='client in clients', :key='client.id', :value='client') {{client.name}}
-          .control
-            span.has-text-danger(v-if='isInvalidClient.status') {{isInvalidClient.error}}
-      .field
-        label.label Squad:
-        .control
-          .select.fullWidth(v-bind:class='{"is-danger": isInvalidSquad.status}')
-            select.fullWidth(v-model='project.squad', @input='verifySquadField(project.squad)')
-              option(disabled selected value='null') Selecione o squad
-              option(v-for='squad in squads', :key='squad.id', :value='squad') {{squad.name}}
-          .control
-            span.has-text-danger(v-if='isInvalidSquad.status') {{isInvalidSquad.error}}
-      .field
-        label.label Valor estimado (R$):
-        .control
-          input#estimatedvalue.input(
-            type='number',
-            placeholder='Valor estimado do projeto',
-            min='100',
-            v-model='project.estimated_value',
-            v-bind:class='{"is-danger": isInvalidEstimatedValue.status}',
-            @input='verifyEstimatedValueField(project.estimated_value)',
-            @blur='formatProfit()'
-          )
-          span.has-text-danger(v-if='isInvalidEstimatedValue.status') {{isInvalidEstimatedValue.error}}
-      .field
-        label.label Prazo estimado:
-        .control
-          label.radio
-            input(
-              type='radio',
-              name='time',
-              value='horas',
-              v-model='project.estimated_time.type',
-              @input='verifyEstimatedTimeField(project.estimated_time)',
-              @change='formatDate(beginDate, project.estimated_time)'
-            )
-            |     Horas
-          label.radio
-            input(
-              type='radio',
-              name='time',
-              value='dias',
-              v-model='project.estimated_time.type',
-              @input='verifyEstimatedTimeField(project.estimated_time)',
-              @change='formatDate(beginDate, project.estimated_time)'
-            )
-            |     Dias
-          label.radio
-            input(
-              type='radio',
-              name='time',
-              value='meses',
-              v-model='project.estimated_time.type',
-              @input='verifyEstimatedTimeField(project.estimated_time)',
-              @change='formatDate(beginDate, project.estimated_time)'
-            )
-            |     Meses
-          .control
-            span.has-text-danger(v-if='isInvalidEstimatedTimeType.status') {{isInvalidEstimatedTimeType.error}}
-        .control
-          input#estimatedtime.input(
-            type='number',
-            placeholder='Prazo estimado do projeto',
-            min='1',
-            v-model='project.estimated_time.time',
-            v-bind:class='{"is-danger": isInvalidEstimatedTime.status}',
+          span.has-text-danger(v-if='isInvalidSquad.status') {{isInvalidSquad.error}}
+    .field
+      label.label Valor estimado (R$):
+      .control
+        input#estimatedvalue.input(
+          type='number',
+          placeholder='Valor estimado do projeto',
+          min='100',
+          v-model='project.estimated_value',
+          v-bind:class='{"is-danger": isInvalidEstimatedValue.status}',
+          @input='verifyEstimatedValueField(project.estimated_value)',
+          @blur='formatProfit()'
+        )
+        span.has-text-danger(v-if='isInvalidEstimatedValue.status') {{isInvalidEstimatedValue.error}}
+    .field
+      label.label Prazo estimado:
+      .control
+        label.radio
+          input(
+            type='radio',
+            name='time',
+            value='horas',
+            v-model='project.estimated_time.type',
             @input='verifyEstimatedTimeField(project.estimated_time)',
             @change='formatDate(beginDate, project.estimated_time)'
           )
-          span.has-text-danger(v-if='isInvalidEstimatedTime.status') {{isInvalidEstimatedTime.error}}
-      .field
-        label.label Data de início:
-        .control
-          Datepicker(
-            :config='{ wrap: true, dateFormat: "d/m/Y", locale }',
-            v-model='beginDate'
-            placeholder='DD/MM/AAAA'
+          |     Horas
+        label.radio
+          input(
+            type='radio',
+            name='time',
+            value='dias',
+            v-model='project.estimated_time.type',
+            @input='verifyEstimatedTimeField(project.estimated_time)',
+            @change='formatDate(beginDate, project.estimated_time)'
           )
-          span.has-text-danger(v-if='isInvalidBeginDate.status') {{isInvalidBeginDate.error}}
-      .field(v-if='project.finish_date')
-        label.label Data de Término: &nbsp;
-         span {{project.finish_date | brDate}}
-      .field
-        label.label Custo: &nbsp;
-          span
-           | {{project.cost | brCurrency }}
-      .field
-        label.label Lucro: &nbsp;
-          span(v-bind:class='{"has-text-danger": isProfitValueNegative, "has-text-success": !isProfitValueNegative}')
-           | {{project.profit | brCurrency }}
-      .field.is-grouped.is-grouped-right(v-if='!loading')
-        p.control
-          button.button.is-info(
-            @click='ok(project, $event)',
-          ) {{okButton}}
-        p.control
-          a.button.is-light(@click='cancel()') {{cancelButton}}
-      .field(v-if='loading')
-          a.button.is-info.is-loading.fullWidth
+          |     Dias
+        label.radio
+          input(
+            type='radio',
+            name='time',
+            value='meses',
+            v-model='project.estimated_time.type',
+            @input='verifyEstimatedTimeField(project.estimated_time)',
+            @change='formatDate(beginDate, project.estimated_time)'
+          )
+          |     Meses
+        .control
+          span.has-text-danger(v-if='isInvalidEstimatedTimeType.status') {{isInvalidEstimatedTimeType.error}}
+      .control
+        input#estimatedtime.input(
+          type='number',
+          placeholder='Prazo estimado do projeto',
+          min='1',
+          v-model='project.estimated_time.time',
+          v-bind:class='{"is-danger": isInvalidEstimatedTime.status}',
+          @input='verifyEstimatedTimeField(project.estimated_time)',
+          @change='formatDate(beginDate, project.estimated_time)'
+        )
+        span.has-text-danger(v-if='isInvalidEstimatedTime.status') {{isInvalidEstimatedTime.error}}
+    .field
+      label.label Data de início:
+      .control
+        Datepicker(
+          :config='{ wrap: true, dateFormat: "d/m/Y", locale }',
+          v-model='beginDate'
+          placeholder='DD/MM/AAAA'
+        )
+        span.has-text-danger(v-if='isInvalidBeginDate.status') {{isInvalidBeginDate.error}}
+    .field(v-if='project.finish_date')
+      label.label Data de Término: &nbsp;
+        span {{project.finish_date | brDate}}
+    .field
+      label.label Custo: &nbsp;
+        span
+          | {{project.cost | brCurrency }}
+    .field
+      label.label Lucro: &nbsp;
+        span(v-bind:class='{"has-text-danger": isProfitValueNegative, "has-text-success": !isProfitValueNegative}')
+          | {{project.profit | brCurrency }}
+    .field.is-grouped.is-grouped-right(v-if='!loading')
+      p.control
+        button.button.is-info(
+          @click='ok(project, $event)',
+        ) {{okButton}}
+      p.control
+        a.button.is-light(@click='cancel()') {{cancelButton}}
+    .field(v-if='loading')
+        a.button.is-info.is-loading.fullWidth
 
 </template>
 
 <script>
-import Notification from '../../components/Notification'
 import Datepicker from 'vue-bulma-datepicker'
 import locale from '../../json/datepicker-locale.json'
 import _ from 'lodash'
 export default {
   components: {
-    Notification,
     Datepicker
   },
   props: {
@@ -146,7 +136,7 @@ export default {
     squadsProp: { type: Array, default: () => [] },
     okButton: { type: String, default: 'Salvar' },
     cancelButton: { type: String, default: 'Cancelar' },
-    notification: { type: Object, default: () => {} },
+    formTitle: { type: String, default: '' },
     loading: { type: Boolean, default: false }
   },
   data () {
@@ -173,6 +163,8 @@ export default {
   watch: {
     projectProp (newValue) {
       this.project = _.clone(newValue)
+      this.beginDate = _.clone(this.project.begin_date || '')
+      this.isProfitValueNegative = _.clone(this.project.profit <= 0 || false)
     },
     clientsProp (newValue) {
       this.clients = _.clone(newValue)
@@ -196,23 +188,20 @@ export default {
     },
     formatDate (beginDate, estimatedTime) {
       if (beginDate && estimatedTime) {
+        let finishDate = new Date()
         let spliDate = beginDate.split('/')
         beginDate = new Date(`${spliDate[1]}/${spliDate[0]}/${spliDate[2]}`)
-        let date = new Date(beginDate)
-        this.project.begin_date = date
+        let date = _.clone(new Date(beginDate))
+        this.project.begin_date = _.clone(date)
         if (estimatedTime.type === 'horas') {
-          let finishDate = new Date(date.setHours(date.getHours() + estimatedTime.time))
-          this.project.finish_date = finishDate
-          return finishDate
+          finishDate = new Date(date.setHours(date.getHours() + estimatedTime.time))
         } else if (estimatedTime.type === 'dias') {
-          let finishDate = new Date(date.setDate(date.getDay() + Math.ceil(estimatedTime.time)))
-          this.project.finish_date = finishDate
-          return finishDate
+          finishDate = new Date(date.setDate(date.getDay() + Math.ceil(estimatedTime.time)))
         } else if (estimatedTime.type === 'meses') {
-          let finishDate = new Date(date.setMonth(date.getMonth() + Math.ceil(estimatedTime.time)))
-          this.project.finish_date = finishDate
-          return finishDate
+          finishDate = new Date(date.setMonth(date.getMonth() + Math.ceil(estimatedTime.time)))
         }
+        this.project.finish_date = _.clone(finishDate)
+        return finishDate
       }
     },
     formatProfit () {
@@ -228,7 +217,8 @@ export default {
         this.verifyClientField(project.client) &&
         this.verifySquadField(project.squad) &&
         this.verifyEstimatedValueField(project.estimated_value) &&
-        this.verifyEstimatedTimeField(project.estimated_time)
+        this.verifyEstimatedTimeField(project.estimated_time) &&
+        this.verifyBeginDateField(this.beginDate)
       )
     },
     verifyNameField (name) {
@@ -242,7 +232,7 @@ export default {
       }
     },
     verifyBeginDateField (beginDate) {
-      if (!beginDate || beginDate.length === 0) {
+      if (!beginDate) {
         this.isInvalidBeginDate.status = true
         this.isInvalidBeginDate.error = 'Preencha este campo obrigatório'
         return false
@@ -309,7 +299,7 @@ export default {
     }
   },
   mounted () {
-    this.isProfitValueNegative = this.project.profit <= 0 || false
+    this.isProfitValueNegative = _.clone(this.project.profit <= 0 || false)
     this.$store.dispatch('setHeader')
   },
   beforeDestroy () {
@@ -319,9 +309,6 @@ export default {
 </script>
 
 <style lang='scss'>
-.project-register {
-  margin-top: 2%;
-}
 .project-form {
   border: 1px solid #01bca2;
   padding: 20px;

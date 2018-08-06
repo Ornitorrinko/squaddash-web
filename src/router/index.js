@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import localstorage from '../utils/localstorage'
 import http from 'axios'
 import routes from './routes'
+import Utils from '../utils/index'
 Vue.use(Router)
 
 const router = new Router({
@@ -10,8 +10,8 @@ const router = new Router({
   routes
 })
 router.beforeEach((to, from, next) => {
-  if (localstorage.get('token')) {
-    http.defaults.headers.common['Authorization'] = `Bearer ${localstorage.get('token')}`
+  if (Utils.localstorage.get('token')) {
+    http.defaults.headers.common['Authorization'] = `Bearer ${Utils.localstorage.get('token')}`
     next()
   } else {
     if (to.path !== '/login') {
