@@ -7,6 +7,9 @@ export default {
   editProject (project) {
     return http.put(`/projects/${project.id}`, project)
   },
+  deleteProject (project) {
+    return http.put(`/projects/${project.id}`, project)
+  },
   getAllProjects () {
     return http.get('/projects')
   },

@@ -1,5 +1,12 @@
 <template lang='pug'>
 .projects
+  Notification(
+    :title='notification.title',
+    :message='notification.message',
+    :type='notification.messageClass',
+    :open='notification.open',
+    :duration='3500'
+  )
   .container
     h1.title Projetos
     .columns
@@ -33,49 +40,105 @@
             td.table-content-row-item {{project.status | boolFormat('Ativado', 'Desativado')}}
             td.table-content-row-item
               .actions
-                span.fa.fa-eye.actions-link(@click='openViewProjectModal(project)', title='ver detalhes')
-                router-link(:to='{ path: `/projetos/editar/${project.id}` }')
-                  span.fa.fa-edit.actions-link(title='editar projeto')
+                span.fa.fa-eye.actions-link(@click='openProjectViewModal(project)', title='ver detalhes')
+                router-link.actions-link(:to='{ path: `/projetos/editar/${project.id}` }')
+                  span.fa.fa-edit(title='editar projeto')
                 span.fa.fa-toggle-on.actions-link(v-if='project.status', @click='changeStatus(false, index)', title='desativar projeto')
                 span.fa.fa-toggle-off.actions-link(v-if='!project.status', @click='changeStatus(true, index)', title='ativar projeto')
-                span.fa.fa-trash.actions-link(title='excluir projeto', @click='deleteProject(project)')
-  ViewProjectModal(:project='selectedProject', :showModal='showModal', @onClose='closeViewProjectModal')
+                span.fa.fa-trash.actions-link(title='excluir projeto', @click='openProjectDeleteModal(project)')
+  ProjectViewModal(
+    :project='selectedProject',
+    :showModal='showProjectViewModal',
+    @onClose='closeProjectViewModal'
+  )
+  ProjectDeleteModal(
+    :project='selectedProject',
+    :showModal='showProjectDeleteModal',
+    @onClose='closeProjectDeleteModal',
+    @onSubmit='deleteProject'
+  )
 </template>
 
 <script>
 import _ from 'lodash'
 import Utils from '../../utils/index'
-import ViewProjectModal from './ViewProjectModal'
+import ProjectViewModal from './ProjectViewModal'
+import ProjectDeleteModal from './ProjectDeleteModal'
+import Notification from '../../components/Notification'
 export default {
   components: {
-    ViewProjectModal
+    ProjectViewModal,
+    ProjectDeleteModal,
+    Notification
   },
   computed: {
     allProjects () {
       return this.$store.state.Projects.allProjects
+    },
+    messageClass () {
+      return this.$store.state.Projects.messageClass
+    },
+    title () {
+      return this.$store.state.Projects.title
+    },
+    message () {
+      return this.$store.state.Projects.message
+    },
+    loading () {
+      return this.$store.state.loading
     }
   },
   data () {
     return {
       projects: [],
-      showModal: false,
+      showProjectViewModal: false,
+      showProjectDeleteModal: false,
       selectedProject: {
         client: {},
         squad: {},
         estimated_time: {}
-      }
+      },
+      notification: {}
     }
   },
   methods: {
     changeStatus (value, index) {
-      this.projects[index].status = value
+      let project = this.projects[index]
+      project.status = value
+      this.$store.dispatch('editProject', project).then(() => {
+        if (this.messageClass === 'success') {
+          this.openNotification(this.message, this.messageClass, this.title)
+        }
+      })
     },
-    openViewProjectModal (project) {
+    deleteProject (project) {
+      project.deleted = true
+      this.$store.dispatch('deleteProject', project).then(() => {
+        if (this.messageClass === 'success') {
+          this.openNotification(this.message, this.messageClass, this.title)
+          this.closeProjectDeleteModal()
+        }
+      })
+    },
+    openNotification (message, messageClass, title) {
+      this.notification.message = message
+      this.notification.messageClass = messageClass
+      this.notification.title = title
+      this.notification.open = true
+    },
+    openProjectViewModal (project) {
       this.selectedProject = project
-      this.showModal = true
+      this.showProjectViewModal = true
     },
-    closeViewProjectModal (value) {
-      this.showModal = value
+    openProjectDeleteModal (project) {
+      this.selectedProject = project
+      this.showProjectDeleteModal = true
+    },
+    closeProjectViewModal (value) {
+      this.showProjectViewModal = value
+    },
+    closeProjectDeleteModal (value) {
+      this.showProjectDeleteModal = value
     },
     searchTable () {
       Utils.searchTable()

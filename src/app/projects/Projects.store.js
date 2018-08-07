@@ -17,10 +17,19 @@ const mutations = {
     state.messageClass = 'danger'
   },
   'EDIT_PROJECT_SUCCESS' (state) {
-    state.message = 'Projeto salvo com sucesso'
+    state.message = 'Projeto alterado com sucesso'
     state.messageClass = 'success'
   },
   'EDIT_PROJECT_FAIL' (state, {response}) {
+    console.log('Deu erro', response)
+    state.message = 'Algo de errado não deu certo'
+    state.messageClass = 'danger'
+  },
+  'DELETE_PROJECT_SUCCESS' (state) {
+    state.message = 'Projeto excluido com sucesso'
+    state.messageClass = 'success'
+  },
+  'DELETE_PROJECT_FAIL' (state, {response}) {
     console.log('Deu erro', response)
     state.message = 'Algo de errado não deu certo'
     state.messageClass = 'danger'
@@ -67,6 +76,18 @@ const actions = {
     } else {
       commit('LOADING')
       commit('EDIT_PROEJCT_FAIL', {response})
+    }
+  },
+  async deleteProject ({commit}, project) {
+    commit('LOADING')
+    project.updated_at = Date.now()
+    let response = await service.deleteProject(project)
+    if (response.data.id) {
+      commit('LOADING')
+      commit('DELETE_PROJECT_SUCCESS')
+    } else {
+      commit('LOADING')
+      commit('DELETE_PROEJCT_FAIL', {response})
     }
   },
   async getAllProjects ({commit}) {
