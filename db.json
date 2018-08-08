@@ -28,12 +28,22 @@
     {
       "logo": "http://www.ornito.com.br/images/ornito_logo_2018.png",
       "name": "Ornito",
-      "email": "mateus@ornito.com.br",
+      "email": "jonatas@ornito.com.br",
       "cnpj": "26589127000181",
       "status": true,
       "created_at": 1533685537269,
-      "updated_at": 1533685537269,
+      "updated_at": 1533761810044,
       "id": 2
+    },
+    {
+      "name": "Teste",
+      "email": "email@email.com",
+      "cnpj": "26589127000181",
+      "status": true,
+      "created_at": 1533762050632,
+      "updated_at": 1533762682350,
+      "id": 3,
+      "deleted": true
     }
   ],
   "employees": [

@@ -81,12 +81,10 @@ export default {
     return {
       clients: [],
       showClientDeleteModal: false,
-      selectedClient: {
-        client: {},
-        squad: {},
-        estimated_time: {}
-      },
-      notification: {}
+      selectedClient: {},
+      notification: {
+        open: false
+      }
     }
   },
   methods: {
@@ -101,10 +99,10 @@ export default {
     },
     deleteClient (client) {
       client.deleted = true
+      this.closeClientDeleteModal(false)
       this.$store.dispatch('deleteClient', client).then(() => {
         if (this.messageClass === 'success') {
           this.openNotification(this.message, this.messageClass, this.title)
-          this.closeClientDeleteModal()
         }
       })
     },
@@ -113,9 +111,10 @@ export default {
       this.notification.messageClass = messageClass
       this.notification.title = title
       this.notification.open = true
+      setTimeout(() => { this.notification.open = false }, 3500)
     },
-    openClientDeleteModal (project) {
-      this.selectedProject = project
+    openClientDeleteModal (client) {
+      this.selectedClient = client
       this.showClientDeleteModal = true
     },
     closeClientDeleteModal (value) {

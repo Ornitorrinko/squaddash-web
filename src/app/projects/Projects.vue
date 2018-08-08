@@ -118,7 +118,7 @@ export default {
         if (this.messageClass === 'success') {
           this.openNotification(this.message, this.messageClass, this.title)
           setTimeout(() => { this.notification.open = false }, 3500)
-          this.closeProjectDeleteModal()
+          this.closeProjectDeleteModal(false)
         }
       })
     },
