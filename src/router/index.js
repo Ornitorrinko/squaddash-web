@@ -10,7 +10,9 @@ const router = new Router({
   routes
 })
 router.beforeEach((to, from, next) => {
-  if (Utils.localstorage.get('token')) {
+  if (to.path === '/usuarios/cadastro') {
+    next()
+  } else if (Utils.localstorage.get('token')) {
     http.defaults.headers.common['Authorization'] = `Bearer ${Utils.localstorage.get('token')}`
     next()
   } else {

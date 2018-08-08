@@ -108,6 +108,7 @@ export default {
       this.$store.dispatch('editProject', project).then(() => {
         if (this.messageClass === 'success') {
           this.openNotification(this.message, this.messageClass, this.title)
+          setTimeout(() => { this.notification.open = false }, 3500)
         }
       })
     },
@@ -116,6 +117,7 @@ export default {
       this.$store.dispatch('deleteProject', project).then(() => {
         if (this.messageClass === 'success') {
           this.openNotification(this.message, this.messageClass, this.title)
+          setTimeout(() => { this.notification.open = false }, 3500)
           this.closeProjectDeleteModal()
         }
       })

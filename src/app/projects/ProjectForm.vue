@@ -300,10 +300,6 @@ export default {
   },
   mounted () {
     this.isProfitValueNegative = _.clone(this.project.profit <= 0 || false)
-    this.$store.dispatch('setHeader')
-  },
-  beforeDestroy () {
-    this.$store.dispatch('setHeader')
   }
 }
 </script>

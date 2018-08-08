@@ -1,9 +1,9 @@
 import http from 'axios'
 export default {
   uploadImageToCloudinary (file) {
-    var CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ornito-media/image/upload'
-    var CLOUDINARY_PRESET_UPLOAD = 'hazaok5z'
-    var formData = new FormData()
+    let CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ornito-media/image/upload'
+    let CLOUDINARY_PRESET_UPLOAD = 'qcvcxjvd'
+    let formData = new FormData()
     formData.append('file', file)
     formData.append('upload_preset', CLOUDINARY_PRESET_UPLOAD)
     formData.append('folder', 'squaddash')

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-const noPhoto = 'http://www.autopostosilvestre.com.br/img/no-photo.jpeg'
+import noPhoto from '../assets/noPhoto.png'
 export default {
   props: {
     src: String,
@@ -51,9 +51,9 @@ export default {
       document.getElementsByClassName('file')[0].value = ''
     },
     removeImage () {
+      this.$emit('remove', '')
       this.imgLink = noPhoto
       document.getElementsByClassName('file')[0].value = ''
-      this.$emit('remove', '')
     }
   },
   mounted () {

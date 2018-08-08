@@ -30,9 +30,9 @@
         tbody
           tr.table-content-row(v-for='(client, index) in clients', v-if='!client.deleted')
             td.table-content-row-item {{client.name}}
-            td.table-content-row-item(v-if='client.logo')
+            td.table-content-row-item
               img.image-100(:src='client.logo')
-            td.table-content-row-item {{client.CNPJ}}
+            td.table-content-row-item {{client.cnpj | cnpj}}
             td.table-content-row-item {{client.email}}
             td.table-content-row-item {{client.status | boolFormat('Ativado', 'Desativado')}}
             td.table-content-row-item

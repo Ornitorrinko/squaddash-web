@@ -8,7 +8,7 @@ const state = {
 }
 const mutations = {
   'CREATE_CLIENT_SUCCESS' (state) {
-    state.message = 'Usuário criado com sucesso'
+    state.message = 'Cliente criado com sucesso'
     state.messageClass = 'success'
   },
   'CREATE_CLIENT_FAIL' (state, {response}) {

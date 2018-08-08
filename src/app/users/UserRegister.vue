@@ -106,6 +106,7 @@
 import Notification from '../../components/Notification'
 import PhotoUpload from '../../components/PhotoUpload'
 import Utils from '../../utils/index'
+import noPhoto from '../../assets/noPhoto.png'
 export default {
   components: {
     Notification,
@@ -132,7 +133,7 @@ export default {
     return {
       confirmPassword: '',
       securityPassword: '',
-      user: {profile_photo: 'http://www.autopostosilvestre.com.br/img/no-photo.jpeg'},
+      user: {profile_photo: noPhoto},
       isInvalidPassword: {status: false, error: ''},
       isInvalidConfirmPassword: {status: false, error: ''},
       isInvalidName: {status: false, error: ''},
