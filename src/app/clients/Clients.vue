@@ -28,7 +28,7 @@
           th.table-content-head-item Status
           th.table-content-head-item
         tbody
-          tr.table-content-row(v-for='(client, index) in clients', v-if='!client.deleted')
+          tr.table-content-row(v-for='(client, index) in clients')
             td.table-content-row-item {{client.name}}
             td.table-content-row-item
               img.image-100(:src='client.logo')
@@ -38,14 +38,17 @@
             td.table-content-row-item
               .actions
                 router-link.actions-link(:to='{ path: `/clientes/editar/${client.id}` }')
-                  span.fa.fa-edit(title='editar projeto')
-                span.fa.fa-toggle-on.actions-link(v-if='client.status', @click='changeStatus(false, index)', title='desativar projeto')
-                span.fa.fa-toggle-off.actions-link(v-if='!client.status', @click='changeStatus(true, index)', title='ativar projeto')
-                span.fa.fa-trash.actions-link(title='excluir projeto', @click='openClientDeleteModal(client)')
-  ClientDeleteModal(
-    :client='selectedClient',
-    :showModal='showClientDeleteModal',
-    @onClose='closeClientDeleteModal',
+                  span.fa.fa-edit(title='editar cliente')
+                span.fa.fa-toggle-on.actions-link(v-if='client.status', @click='changeStatus(false, index)', title='desativar cliente')
+                span.fa.fa-toggle-off.actions-link(v-if='!client.status', @click='changeStatus(true, index)', title='ativar cliente')
+                span.fa.fa-trash.actions-link(title='excluir cliente', @click='openClientConfirmModal(client)')
+  ConfirmModal(
+    :item='selectedClient',
+    :showModal='showClientConfirmModal',
+    :text='`Deseja excluir ${selectedClient.name}?`',
+    :okButton='{text: "Excluir", className: "danger"}',
+    :cancelButton='{text: "Cancelar", className: ""}',
+    @onClose='closeClientConfirmModal',
     @onSubmit='deleteClient'
   )
 </template>
@@ -53,11 +56,11 @@
 <script>
 import _ from 'lodash'
 import Utils from '../../utils/index'
-import ClientDeleteModal from './ClientDeleteModal'
+import ConfirmModal from '../../components/ConfirmModal'
 import Notification from '../../components/Notification'
 export default {
   components: {
-    ClientDeleteModal,
+    ConfirmModal,
     Notification
   },
   computed: {
@@ -80,7 +83,7 @@ export default {
   data () {
     return {
       clients: [],
-      showClientDeleteModal: false,
+      showClientConfirmModal: false,
       selectedClient: {},
       notification: {
         open: false
@@ -99,7 +102,7 @@ export default {
     },
     deleteClient (client) {
       client.deleted = true
-      this.closeClientDeleteModal(false)
+      this.closeClientConfirmModal(false)
       this.$store.dispatch('deleteClient', client).then(() => {
         if (this.messageClass === 'success') {
           this.openNotification(this.message, this.messageClass, this.title)
@@ -113,12 +116,12 @@ export default {
       this.notification.open = true
       setTimeout(() => { this.notification.open = false }, 3500)
     },
-    openClientDeleteModal (client) {
+    openClientConfirmModal (client) {
       this.selectedClient = client
-      this.showClientDeleteModal = true
+      this.showClientConfirmModal = true
     },
-    closeClientDeleteModal (value) {
-      this.showClientDeleteModal = value
+    closeClientConfirmModal (value) {
+      this.showClientConfirmModal = value
     },
     searchTable () {
       Utils.searchTable()
@@ -126,7 +129,7 @@ export default {
   },
   created () {
     this.$store.dispatch('getAllClients').then(() => {
-      this.clients = _.clone(this.allClients)
+      this.clients = _.clone(_.filter(this.allClients, item => !item.deleted))
     })
   }
 }

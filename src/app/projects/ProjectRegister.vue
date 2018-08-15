@@ -13,8 +13,8 @@
     :squadsProp='squads',
     :loading='loading',
     :formTitle='"Cadastrar projeto"'
-    @onOkClick='createProject',
-    @onCancelClick='cancel'
+    @onOk='createProject',
+    @onCancel='cancel'
   )
 </template>
 

@@ -11,7 +11,7 @@
     h1.title Squads
     .columns
       .column
-        router-link.button.is-squadDash.is-outlined(:to='{ path: `/squads/cadastro`}') Criar squade
+        router-link.button.is-squadDash.is-outlined(:to='{ path: `/squads/cadastro`}') Criar squad
       .column
         .control.has-icons-right
           input#search.input.squadDash-input(type='text', placeholder='Pesquisar por squad', @input='searchTable()')
@@ -23,40 +23,45 @@
         thead
           th.table-content-head-item Squad
           th.table-content-head-item Funcionários
+          th.table-content-head-item Custo
           th.table-content-head-item Status
           th.table-content-head-item
         tbody
           tr.table-content-row(v-for='(squad, index) in squads', v-if='!squad.deleted')
             td.table-content-row-item {{squad.name}}
             td.table-content-row-item
-              ListBadge(:items='squad.employees')
+              ListBadge(:items='squad.employees' :reference='squad', @onDelete='deleteEmployeeInSquad')
+            td.table-content-row-item {{squad.cost | brCurrency}}
             td.table-content-row-item {{squad.status | boolFormat('Ativado', 'Desativado')}}
             td.table-content-row-item
               .actions
-                router-link.actions-link(:to='{ path: `/squades/editar/${squad.id}` }')
-                  span.fa.fa-edit(title='editar projeto')
-                span.fa.fa-toggle-on.actions-link(v-if='squad.status', @click='changeStatus(false, index)', title='desativar projeto')
-                span.fa.fa-toggle-off.actions-link(v-if='!squad.status', @click='changeStatus(true, index)', title='ativar projeto')
-                span.fa.fa-trash.actions-link(title='excluir projeto', @click='openSquadDeleteModal(squad)')
-  //- squadDeleteModal(
-  //-   :squad='selectedsquad',
-  //-   :showModal='showsquadDeleteModal',
-  //-   @onClose='closesquadDeleteModal',
-  //-   @onSubmit='deletesquad'
-  //- )
+                router-link.actions-link(:to='{ path: `/squads/editar/${squad.id}` }')
+                  span.fa.fa-edit(title='editar squad')
+                span.fa.fa-toggle-on.actions-link(v-if='squad.status', @click='changeStatus(false, index)', title='desativar squad')
+                span.fa.fa-toggle-off.actions-link(v-if='!squad.status', @click='changeStatus(true, index)', title='ativar squad')
+                span.fa.fa-trash.actions-link(title='excluir squad', @click='openSquadConfirmModal(squad)')
+  ConfirmModal(
+    :item='selectedSquad',
+    :showModal='showSquadConfirmModal',
+    :text='`Deseja excluir ${selectedSquad.name}?`',
+    :okButton='{text: "Excluir", className: "danger"}',
+    :cancelButton='{text: "Cancelar", className: ""}',
+    @onClose='closeSquadConfirmModal',
+    @onSubmit='deleteSquad'
+  )
 </template>
 
 <script>
 import _ from 'lodash'
 import Utils from '../../utils/index'
-import SquadDeleteModal from './SquadDeleteModal'
 import Notification from '../../components/Notification'
 import ListBadge from '../../components/ListBadge'
+import ConfirmModal from '../../components/ConfirmModal'
 export default {
   components: {
-    SquadDeleteModal,
     Notification,
-    ListBadge
+    ListBadge,
+    ConfirmModal
   },
   computed: {
     allSquads () {
@@ -78,27 +83,30 @@ export default {
   data () {
     return {
       squads: [],
-      showsquadDeleteModal: false,
-      selectedsquad: {},
+      showSquadConfirmModal: false,
+      selectedSquad: {},
       notification: {
         open: false
       }
     }
   },
   methods: {
-    changeStatus (value, index) {
-      let squad = this.squads[index]
-      squad.status = value
-      this.$store.dispatch('editsquad', squad).then(() => {
+    editSquad (squad) {
+      this.$store.dispatch('editSquad', squad).then(() => {
         if (this.messageClass === 'success') {
           this.openNotification(this.message, this.messageClass, this.title)
         }
       })
     },
-    deletesquad (squad) {
+    changeStatus (value, index) {
+      let squad = this.squads[index]
+      squad.status = value
+      this.editSquad(squad)
+    },
+    deleteSquad (squad) {
       squad.deleted = true
-      this.closesquadDeleteModal(false)
-      this.$store.dispatch('deletesquad', squad).then(() => {
+      this.closeSquadConfirmModal(false)
+      this.$store.dispatch('deleteSquad', squad).then(() => {
         if (this.messageClass === 'success') {
           this.openNotification(this.message, this.messageClass, this.title)
         }
@@ -111,15 +119,20 @@ export default {
       this.notification.open = true
       setTimeout(() => { this.notification.open = false }, 3500)
     },
-    openSquadDeleteModal (squad) {
-      this.selectedsquad = squad
-      this.showsquadDeleteModal = true
+    openSquadConfirmModal (squad) {
+      this.selectedSquad = squad
+      this.showSquadConfirmModal = true
     },
-    closesquadDeleteModal (value) {
-      this.showsquadDeleteModal = value
+    closeSquadConfirmModal (value) {
+      this.showSquadConfirmModal = value
     },
     searchTable () {
       Utils.searchTable()
+    },
+    deleteEmployeeInSquad (employeeId, squad) {
+      let employees = squad.employees
+      employees.splice(_.indexOf(employees, item => _.find(employees, employee => employeeId === employee)), 1)
+      this.editSquad(squad)
     }
   },
   created () {

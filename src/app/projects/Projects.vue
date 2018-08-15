@@ -29,7 +29,7 @@
           th.table-content-head-item Status
           th.table-content-head-item
         tbody
-          tr.table-content-row(v-for='(project, index) in projects', v-if='!project.deleted')
+          tr.table-content-row(v-for='(project, index) in projects')
             td.table-content-row-item {{project.name}}
             td.table-content-row-item(v-if='project.client.logo')
               img.image-100(:src='project.client.logo')
@@ -45,16 +45,19 @@
                   span.fa.fa-edit(title='editar projeto')
                 span.fa.fa-toggle-on.actions-link(v-if='project.status', @click='changeStatus(false, index)', title='desativar projeto')
                 span.fa.fa-toggle-off.actions-link(v-if='!project.status', @click='changeStatus(true, index)', title='ativar projeto')
-                span.fa.fa-trash.actions-link(title='excluir projeto', @click='openProjectDeleteModal(project)')
+                span.fa.fa-trash.actions-link(title='excluir projeto', @click='openProjectConfirmModal(project)')
   ProjectViewModal(
     :project='selectedProject',
     :showModal='showProjectViewModal',
     @onClose='closeProjectViewModal'
   )
-  ProjectDeleteModal(
-    :project='selectedProject',
-    :showModal='showProjectDeleteModal',
-    @onClose='closeProjectDeleteModal',
+  ConfirmModal(
+    :item='selectedProject',
+    :showModal='showProjectConfirmModal',
+    :text='`Deseja excluir ${selectedProject.name}?`',
+    :okButton='{text: "Excluir", className: "danger"}',
+    :cancelButton='{text: "Cancelar", className: ""}',
+    @onClose='closeProjectConfirmModal',
     @onSubmit='deleteProject'
   )
 </template>
@@ -63,12 +66,12 @@
 import _ from 'lodash'
 import Utils from '../../utils/index'
 import ProjectViewModal from './ProjectViewModal'
-import ProjectDeleteModal from './ProjectDeleteModal'
+import ConfirmModal from '../../components/ConfirmModal'
 import Notification from '../../components/Notification'
 export default {
   components: {
     ProjectViewModal,
-    ProjectDeleteModal,
+    ConfirmModal,
     Notification
   },
   computed: {
@@ -92,13 +95,15 @@ export default {
     return {
       projects: [],
       showProjectViewModal: false,
-      showProjectDeleteModal: false,
+      showProjectConfirmModal: false,
       selectedProject: {
         client: {},
         squad: {},
         estimated_time: {}
       },
-      notification: {}
+      notification: {
+        open: false
+      }
     }
   },
   methods: {
@@ -108,7 +113,6 @@ export default {
       this.$store.dispatch('editProject', project).then(() => {
         if (this.messageClass === 'success') {
           this.openNotification(this.message, this.messageClass, this.title)
-          setTimeout(() => { this.notification.open = false }, 3500)
         }
       })
     },
@@ -117,8 +121,7 @@ export default {
       this.$store.dispatch('deleteProject', project).then(() => {
         if (this.messageClass === 'success') {
           this.openNotification(this.message, this.messageClass, this.title)
-          setTimeout(() => { this.notification.open = false }, 3500)
-          this.closeProjectDeleteModal(false)
+          this.closeProjectConfirmModal(false)
         }
       })
     },
@@ -127,20 +130,21 @@ export default {
       this.notification.messageClass = messageClass
       this.notification.title = title
       this.notification.open = true
+      setTimeout(() => { this.notification.open = false }, 3500)
     },
     openProjectViewModal (project) {
       this.selectedProject = project
       this.showProjectViewModal = true
     },
-    openProjectDeleteModal (project) {
+    openProjectConfirmModal (project) {
       this.selectedProject = project
-      this.showProjectDeleteModal = true
+      this.showProjectConfirmModal = true
     },
     closeProjectViewModal (value) {
       this.showProjectViewModal = value
     },
-    closeProjectDeleteModal (value) {
-      this.showProjectDeleteModal = value
+    closeProjectConfirmModal (value) {
+      this.showProjectConfirmModal = value
     },
     searchTable () {
       Utils.searchTable()
@@ -148,7 +152,7 @@ export default {
   },
   created () {
     this.$store.dispatch('getAllProjects').then(() => {
-      this.projects = _.clone(this.allProjects)
+      this.projects = _.clone(_.filter(this.allProjects, item => !item.deleted))
     })
   }
 }

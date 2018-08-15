@@ -180,11 +180,11 @@ export default {
     ok (project, event) {
       event.preventDefault()
       if (this.checkForm(project)) {
-        this.$emit('onOkClick', project)
+        this.$emit('onOk', project)
       }
     },
     cancel () {
-      this.$emit('onCancelClick')
+      this.$emit('onCancel')
     },
     formatDate (beginDate, estimatedTime) {
       if (beginDate && estimatedTime) {

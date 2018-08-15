@@ -37,11 +37,6 @@ const mutations = {
   'GET_ALL_PROJECTS_SUCCESS' (state, {projects}) {
     state.allProjects = projects
   },
-  'GET_ALL_PROJECTS_FAIL' (state, {response}) {
-    console.log('Deu erro', response)
-    state.message = 'Algo de errado não deu certo'
-    state.messageClass = 'danger'
-  },
   'GET_PROJECT_BY_ID_SUCCESS' (state, {project}) {
     state.selectedProject = project
   },
@@ -63,7 +58,7 @@ const actions = {
       commit('CREATE_PROJECT_SUCCESS')
     } else {
       commit('LOADING')
-      commit('CREATE_PROEJCT_FAIL', {response})
+      commit('CREATE_PROJECT_FAIL', {response})
     }
   },
   async editProject ({commit}, project) {
@@ -75,7 +70,7 @@ const actions = {
       commit('EDIT_PROJECT_SUCCESS')
     } else {
       commit('LOADING')
-      commit('EDIT_PROEJCT_FAIL', {response})
+      commit('EDIT_PROJECT_FAIL', {response})
     }
   },
   async deleteProject ({commit}, project) {
@@ -87,17 +82,13 @@ const actions = {
       commit('DELETE_PROJECT_SUCCESS')
     } else {
       commit('LOADING')
-      commit('DELETE_PROEJCT_FAIL', {response})
+      commit('DELETE_PROJECT_FAIL', {response})
     }
   },
   async getAllProjects ({commit}) {
     let response = await service.getAllProjects()
     let projects = response.data
-    if (projects.length > 0) {
-      commit('GET_ALL_PROJECTS_SUCCESS', {projects})
-    } else {
-      commit('GET_ALL_PROJECTS_FAIL')
-    }
+    commit('GET_ALL_PROJECTS_SUCCESS', {projects})
   },
   async getProjectById ({commit}, id) {
     let response = await service.getProjectById(id)

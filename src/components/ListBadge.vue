@@ -12,20 +12,26 @@
 <script>
 export default {
   props: {
-    items: {type: Array, default: () => []}
+    items: {type: Array, default: () => []},
+    reference: {type: Object, default: () => {}}
   },
   methods: {
     selectItem (item) {
-      this.$emit('onSelect', item)
+      this.$emit('onSelect', item, this.reference)
     },
     deleteItem (id) {
-      this.$emit('onDelete', id)
+      this.$emit('onDelete', id, this.reference)
     }
   }
 }
 </script>
 
 <style lang='scss'>
+.list-badge {
+  border: 1px solid #00b89c;
+  border-radius: 10px;
+  height: 50px;
+}
 .list-badge-item {
   width: 100%;
   display: flex;
@@ -41,9 +47,6 @@ export default {
   }
 }
 .list-badge-content {
-  border: 1px solid #00b89c;
-  border-radius: 10px;
-  height: 50px;
   padding: 10px;
   overflow-y: scroll;
 }
